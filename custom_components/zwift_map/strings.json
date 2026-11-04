@@ -1,0 +1,72 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Zwift account",
+        "description": "Same login as the Zwift app. Read-only use of Zwift's unofficial API.",
+        "data": {
+          "username": "Email",
+          "password": "Password"
+        }
+      },
+      "reauth_confirm": {
+        "title": "Sign in to Zwift again",
+        "description": "Same login as the Zwift app. Read-only use of Zwift's unofficial API.",
+        "data": {
+          "username": "Email",
+          "password": "Password"
+        }
+      }
+    },
+    "error": {
+      "invalid_auth": "Zwift rejected these credentials.",
+      "cannot_connect": "Could not reach Zwift."
+    },
+    "abort": {
+      "already_configured": "This Zwift account is already configured.",
+      "reauth_successful": "Signed in again.",
+      "wrong_account": "This is a different Zwift account."
+    }
+  },
+  "entity": {
+    "binary_sensor": {
+      "riding": {
+        "name": "Riding"
+      }
+    },
+    "sensor": {
+      "route": {
+        "name": "Route"
+      },
+      "world": {
+        "name": "World"
+      },
+      "route_progress": {
+        "name": "Route progress"
+      },
+      "route_distance": {
+        "name": "Distance on route"
+      },
+      "remaining_distance": {
+        "name": "Remaining distance"
+      },
+      "lap": {
+        "name": "Lap"
+      },
+      "gradient": {
+        "name": "Gradient"
+      },
+      "live": {
+        "name": "Live",
+        "state": {
+          "offline": "Offline",
+          "free_ride": "Free ride",
+          "lead_in": "Lead-in",
+          "on_route": "On route",
+          "finished": "Finished",
+          "unknown_route": "Unknown route"
+        }
+      }
+    }
+  }
+}
