@@ -627,12 +627,15 @@ class ZwiftMapCard extends HTMLElement {
       el("path", { d: polyline(pts.map(this._project)), class: "road", "stroke-width": 26 }, map);
       // Distance-proportional dash: points are evenly spaced along the road.
       const onRoute = track.points.filter((p) => p[0] >= 0).map((p) => this._project([p[1], p[2]]));
-      this._live.done = el("path", { d: polyline(onRoute), class: "done", "stroke-width": 14, pathLength: 1000, "stroke-dasharray": "0 1000" }, map);
       const segs = this._routeSegments(attrs);
       const len = attrs.route_length_m || track.length_m;
+      // Segments under the ridden part, so progress inside a segment shows too.
       if (segs.length && len) {
         this._drawSegmentLines(map, polyline(onRoute), len, segs, "segline",
-          { fill: "none", "stroke-width": 9, "stroke-linecap": "round" });
+          { fill: "none", "stroke-width": 16, "stroke-linecap": "round" });
+      }
+      this._live.done = el("path", { d: polyline(onRoute), class: "done", "stroke-width": 10, pathLength: 1000, "stroke-dasharray": "0 1000" }, map);
+      if (segs.length && len) {
         let total = 0;
         try { total = this._live.done.getTotalLength(); } catch (_err) { total = 0; }
         for (const dot of this._drawSegmentDots(map, this._live.done, total, len, segs)) {
@@ -680,8 +683,9 @@ class ZwiftMapCard extends HTMLElement {
     if (!segs.length && this._config.show_segments) {
       for (const s of z.segments || []) el("path", { d: s.d, class: "z-seg", stroke: s.color }, map);
     }
-    L.done = el("path", { d: z.route, class: "z-done", pathLength: 1000, "stroke-dasharray": "0 1000" }, map);
+    // Segments under the ridden part, so progress inside a segment shows too.
     L.segLines = length ? this._drawSegmentLines(map, z.route, length, segs, "z-segline") : [];
+    L.done = el("path", { d: z.route, class: "z-done", pathLength: 1000, "stroke-dasharray": "0 1000" }, map);
     L.segDots = this._drawSegmentDots(map, L.route, this._routeLen, length, segs);
     L.halo = el("circle", { r: 0, class: "z-halo" }, map);
     L.me = el("circle", { r: 0, class: "z-me" }, map);
@@ -719,7 +723,7 @@ class ZwiftMapCard extends HTMLElement {
       this._live.me.setAttribute("r", (11 * unit).toFixed(0));
       this._live.halo.setAttribute("r", (24 * unit).toFixed(0));
       this._live.done?.setAttribute("stroke-width", (7 * unit).toFixed(0));
-      for (const line of this._live.segLines || []) line.setAttribute("stroke-width", (5 * unit).toFixed(0));
+      for (const line of this._live.segLines || []) line.setAttribute("stroke-width", (9 * unit).toFixed(0));
       for (const dot of this._live.segDots || []) {
         dot.setAttribute("r", (6 * unit).toFixed(0));
         dot.setAttribute("stroke-width", (3 * unit).toFixed(0));
