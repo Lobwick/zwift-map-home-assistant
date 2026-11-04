@@ -787,7 +787,10 @@ class ZwiftMapCard extends HTMLElement {
         const expected = this._lastAlong ?? (length ? frac * this._routeLen : null);
         const r = this._nearest(this._routeSamples, X, Y, expected);
         const l = this._leadSamples?.length ? this._nearest(this._leadSamples, X, Y, null) : null;
-        if (l && l.d < r.d && l.d < 15000) {
+        // Lead-ins often share roads with the route: the route wins whenever
+        // it is within 30 m, unless the integration says we are in the lead-in.
+        const leadFirst = l && l.d < 15000 && (a.route_distance_m < 0 || (r.d > 3000 && l.d < r.d));
+        if (leadFirst) {
           pos = { x: l.x, y: l.y };
           onLead = true;
         } else if (r.d < 15000) {
