@@ -30,6 +30,11 @@ COURSE_NAMES = {
 }
 
 
+def _metres(route: dict, key: str) -> int | None:
+    value = route.get(key)
+    return None if value is None else int(round(float(value)))
+
+
 # World names as Zwift's game_info spells them.
 MAP_NAMES = {
     "WATOPIA": "Watopia",
@@ -182,20 +187,15 @@ class RouteCatalogue:
                     continue
                 if rid in self._routes or distance <= 0:
                     continue
-
-                def metres(key: str) -> int | None:
-                    value = r.get(key)
-                    return None if value is None else int(round(float(value)))
-
                 self._routes[rid] = RouteInfo(
                     id=rid,
                     name=str(r.get("name") or f"Route {rid}"),
                     world=world_name,
                     world_id=None,
                     distance_m=distance,
-                    elevation_m=metres("ascentInMeters"),
-                    lead_in_m=metres("leadinDistanceInMeters") or 0,
-                    lead_in_free_ride_m=metres("freeRideLeadinDistanceInMeters"),
+                    elevation_m=_metres(r, "ascentInMeters"),
+                    lead_in_m=_metres(r, "leadinDistanceInMeters") or 0,
+                    lead_in_free_ride_m=_metres(r, "freeRideLeadinDistanceInMeters"),
                     lap=bool(r.get("supportedLaps", True)),
                     event_only=bool(r.get("publicEventsOnly", False)),
                 )
