@@ -14,6 +14,7 @@ Affiche la **route Zwift que tu roules**, en direct, sur un écran Home Assistan
 - **Intégration `zwift_map`** : interroge Zwift toutes les 2 s pendant que tu roules (toutes les 30 s sinon) et lit les champs que les autres intégrations ignorent, en particulier l'**identifiant de la route** et le **monde**.
 - **Progression réelle sur la route** : la distance de Zwift est celle de toute la sortie. L'intégration repart de zéro quand une route est choisie, déduit le **lead-in** (différent en événement et en free ride) et compte les **tours**. Exemple : 10 km de free ride puis 1 km sur une route de 20 km donnent **5 %**, pas 55 %.
 - **Carte façon Zwift** : la carte illustrée du monde avec la route, le lead-in, les segments chronométrés (KOM, sprints) et le profil complet, dès la première sortie. Ces cartes viennent de [ZwiftHacks](https://zwifthacks.com). L'intégration télécharge celle d'une route la première fois qu'elle s'affiche, puis la garde dans `/config/zwift_map/zwifthacks/` : une image de fond par monde, plus un petit fichier par route. Ta position est placée selon la distance parcourue sur le tracé.
+- **Segments** : bandeau « ⛰ Epic KOM dans 1,9 km · 9,4 km à 4 % », qui passe à « encore 4,3 km » avec une barre de progression une fois dans le segment. Les montées sont en rouge, les sprints en vert et les autres segments en violet. Sur la carte, chaque segment a son repère de départ et d'arrivée ; sur le profil, il apparaît en bande colorée avec son nom. Le capteur `sensor.zwift_map_next_segment` donne le segment en cours ou le prochain, pour tes automatisations. Les positions viennent de zwift-data, disponibles pour 257 des 353 routes.
 - **Tracé enregistré pendant tes sorties** (solution de repli) : à chaque passage, la position et l'altitude envoyées par le jeu sont enregistrées tous les 10 m dans `/config/zwift_map/tracks/<route_id>.json`. C'est ce tracé que la carte utilise quand ZwiftHacks ne connaît pas la route ou n'est pas joignable.
 - **Carte Lovelace `zwift-map-card`** : servie directement par l'intégration, rien d'autre à installer.
 
@@ -35,6 +36,7 @@ Affiche la **route Zwift que tu roules**, en direct, sur un écran Home Assistan
 | `sensor.zwift_map_remaining_distance` | Distance restante (km) |
 | `sensor.zwift_map_lap` | Tour en cours |
 | `sensor.zwift_map_gradient` | Pente (%) |
+| `sensor.zwift_map_next_segment` | Segment en cours ou prochain segment (attributs : type, `inside`, distance avant le départ, restant, % parcouru, pente moyenne) |
 | `sensor.zwift_map_live` | Phase (`free_ride`, `lead_in`, `on_route`…) avec toutes les données en direct en attributs, non enregistrées dans l'historique. C'est la source de la carte. |
 
 ## La carte
@@ -55,6 +57,7 @@ map_mirror: false     # style simple
 show_map: true
 show_profile: true
 show_stats: true
+show_segments: true   # bandeau + segments sur la carte et le profil
 ```
 
 Sur un écran dédié, mets la carte seule dans une vue en mode **Panneau** : elle occupe tout l'écran, et la carte du parcours prend l'espace libre. Le format portrait est prévu pour les 750×1334 du NSPanel Pro 120.
