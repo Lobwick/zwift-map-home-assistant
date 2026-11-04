@@ -15,7 +15,7 @@ from collections import deque
 from dataclasses import dataclass, field
 from typing import Any
 
-from .routes import RouteInfo
+from .routes import RouteInfo, RouteSegment
 
 PHASE_FREE_RIDE = "free_ride"
 PHASE_LEAD_IN = "lead_in"
@@ -133,6 +133,63 @@ class ProgressTracker:
             if d >= length:
                 progress.phase = PHASE_FINISHED
         return progress
+
+
+@dataclass(slots=True)
+class SegmentStatus:
+    """The segment the rider is in, or the next one ahead."""
+
+    segment: RouteSegment
+    inside: bool
+    distance_to_m: float  # 0 when inside
+    done_m: float  # metres ridden in the segment (0 when ahead)
+    remaining_m: float  # metres left in the segment (its length when ahead)
+
+    def as_dict(self) -> dict[str, Any]:
+        seg = self.segment
+        return {
+            "name": seg.name,
+            "type": seg.type,
+            "inside": self.inside,
+            "distance_to_m": round(self.distance_to_m),
+            "length_m": seg.length_m,
+            "done_m": round(self.done_m),
+            "remaining_m": round(self.remaining_m),
+            "progress_pct": round(self.done_m / seg.length_m * 100, 1) if seg.length_m else 0.0,
+            "avg_grade": seg.avg_grade,
+            "from_m": seg.from_m,
+            "to_m": seg.to_m,
+        }
+
+
+def segment_status(progress: Progress) -> SegmentStatus | None:
+    """Current segment (the shortest one containing the rider) or the next one.
+
+    Distances are within the current lap; during the lead-in they are negative,
+    so the first segment is reached after the start line. On lap routes the
+    first segment of the next lap follows the last one.
+    """
+    route = progress.route
+    d = progress.lap_distance_m
+    if (
+        route is None
+        or not route.segments
+        or d is None
+        or progress.phase not in (PHASE_LEAD_IN, PHASE_ON_ROUTE)
+    ):
+        return None
+    inside = [s for s in route.segments if s.from_m <= d < s.to_m]
+    if inside:
+        seg = min(inside, key=lambda s: s.length_m)
+        return SegmentStatus(seg, True, 0.0, d - seg.from_m, seg.to_m - d)
+    ahead = [s for s in route.segments if s.from_m > d]
+    if ahead:
+        seg = ahead[0]
+        return SegmentStatus(seg, False, seg.from_m - d, 0.0, float(seg.length_m))
+    if route.lap:
+        seg = route.segments[0]
+        return SegmentStatus(seg, False, route.distance_m - d + seg.from_m, 0.0, float(seg.length_m))
+    return None
 
 
 class GradientEstimator:

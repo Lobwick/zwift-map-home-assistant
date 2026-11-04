@@ -161,3 +161,65 @@ def test_bundled_catalogue_loads():
     assert big_loop.world == "Watopia"
     assert cat.world_name(10) == "France"
     assert cat.get(0) is None
+
+
+def seg_route(lap=True):
+    from zwift_map_pure.routes import RouteSegment
+
+    return RouteInfo(
+        id=7,
+        name="Seg",
+        world="Watopia",
+        world_id=1,
+        distance_m=20_000,
+        elevation_m=100,
+        lead_in_m=500,
+        lead_in_free_ride_m=None,
+        lap=lap,
+        event_only=False,
+        segments=(
+            RouteSegment("kom", "Epic KOM", "climb", 4_000, 13_000, 4.0),
+            RouteSegment("sprint", "Sprint", "sprint", 10_000, 10_300),
+            RouteSegment("lap", "Lap", "segment", 15_000, 18_000),
+        ),
+    )
+
+
+def status_at(route, distance, start=0):
+    from zwift_map_pure.tracker import segment_status
+
+    t = ProgressTracker()
+    t.update(route.id, start, route, in_event=True)
+    return segment_status(t.update(route.id, start + distance, route, in_event=True))
+
+
+def test_next_segment_ahead_and_inside():
+    r = seg_route()
+    s = status_at(r, 500 + 1_000)  # 1 km after the start line
+    assert (s.segment.name, s.inside, s.distance_to_m) == ("Epic KOM", False, 3_000)
+    s = status_at(r, 500 + 6_000)
+    assert (s.segment.name, s.inside, s.done_m, s.remaining_m) == ("Epic KOM", True, 2_000, 7_000)
+    assert s.as_dict()["progress_pct"] == pytest.approx(2_000 / 9_000 * 100, abs=0.1)
+
+
+def test_shortest_containing_segment_wins():
+    s = status_at(seg_route(), 500 + 10_100)  # sprint inside the climb
+    assert (s.segment.name, s.inside, s.remaining_m) == ("Sprint", True, 200)
+
+
+def test_lead_in_counts_to_first_segment():
+    s = status_at(seg_route(), 200)  # 300 m before the start line
+    assert (s.segment.name, s.distance_to_m) == ("Epic KOM", 4_300)
+
+
+def test_after_last_segment_wraps_on_lap_routes_only():
+    s = status_at(seg_route(lap=True), 500 + 19_000)
+    assert (s.segment.name, s.distance_to_m) == ("Epic KOM", 1_000 + 4_000)
+    assert status_at(seg_route(lap=False), 500 + 19_000) is None
+
+
+def test_catalogue_segments_for_big_loop():
+    big_loop = RouteCatalogue.load().get(2947111049)
+    assert [(s.name, s.type, s.from_m, s.to_m) for s in big_loop.segments] == [
+        ("Epic KOM", "climb", 4408, 13808)
+    ]

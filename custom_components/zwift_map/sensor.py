@@ -101,6 +101,12 @@ SENSORS: tuple[ZwiftMapSensorDescription, ...] = (
         value_fn=lambda d: d.progress.lap if d.progress else None,
     ),
     ZwiftMapSensorDescription(
+        key="next_segment",
+        icon="mdi:flag-variant",
+        value_fn=lambda d: d.segment.segment.name if d.riding and d.segment else None,
+        attrs_fn=lambda d: d.segment.as_dict() if d.riding and d.segment else {},
+    ),
+    ZwiftMapSensorDescription(
         key="gradient",
         icon="mdi:slope-uphill",
         native_unit_of_measurement=PERCENTAGE,
@@ -201,6 +207,8 @@ class ZwiftMapLiveSensor(ZwiftMapEntity, SensorEntity):
                 "in_event": s.in_event,
                 "road_id": s.road_id,
                 "is_forward": s.is_forward,
+                "segments": [seg.as_list() for seg in route.segments] if route else [],
+                "segment": d.segment.as_dict() if d.segment else None,
             }
         )
         return attrs

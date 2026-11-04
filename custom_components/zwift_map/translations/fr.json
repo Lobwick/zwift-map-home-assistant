@@ -66,6 +66,9 @@
           "finished": "Terminée",
           "unknown_route": "Route inconnue"
         }
+      },
+      "next_segment": {
+        "name": "Prochain segment"
       }
     }
   }

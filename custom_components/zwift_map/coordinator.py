@@ -39,6 +39,8 @@ from .tracker import (
     Progress,
     ProgressTracker,
     RouteTrack,
+    SegmentStatus,
+    segment_status,
 )
 
 _LOGGER = logging.getLogger(__name__)
@@ -55,6 +57,7 @@ class ZwiftMapData:
     gradient_pct: float | None = None
     track_version: int = 0
     track_coverage: float = 0.0
+    segment: SegmentStatus | None = None
 
 
 class ZwiftMapCoordinator(DataUpdateCoordinator[ZwiftMapData]):
@@ -181,6 +184,7 @@ class ZwiftMapCoordinator(DataUpdateCoordinator[ZwiftMapData]):
             progress=progress,
             world=world,
             gradient_pct=gradient,
+            segment=segment_status(progress),
             track_version=self._track_version,
             track_coverage=self._track.coverage() if self._track else 0.0,
         )

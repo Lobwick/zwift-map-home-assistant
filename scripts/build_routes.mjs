@@ -31,12 +31,31 @@ const routes = zd.routes
     lap: Boolean(r.lap),
     event_only: Boolean(r.eventOnly),
     sports: r.sports ?? [],
+    // Segments in riding order, positions from the route's start line.
+    segments: (r.segmentsOnRoute ?? []).map((s) => [s.segment, km(s.from), km(s.to)]),
   }))
   .sort((a, b) => a.world.localeCompare(b.world) || a.name.localeCompare(b.name));
+
+const used = new Set(routes.flatMap((r) => r.segments.map((s) => s[0])));
+const segments = Object.fromEntries(
+  zd.segments
+    .filter((s) => used.has(s.slug))
+    .map((s) => [
+      s.slug,
+      {
+        name: s.name,
+        type: s.type, // sprint | climb | segment
+        distance_m: km(s.distance),
+        elevation_m: s.elevation ?? null,
+        avg_grade: s.avgIncline ?? null,
+      },
+    ]),
+);
 
 const out = {
   source: `zwift-data ${version} (MIT, Andi Pätzold)`,
   worlds: Object.fromEntries(zd.worlds.map((w) => [w.id, w.name])),
+  segments,
   routes,
 };
 const target = resolve("custom_components/zwift_map/data/routes.json");

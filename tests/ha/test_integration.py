@@ -152,6 +152,14 @@ async def test_ride_progress_track_and_view(
             (42_604 - 5_378) / 1000, abs=0.01
         )
 
+        # 5 378 m on Big Loop: inside the Epic KOM (4 408 → 13 808 m).
+        nxt = hass.states.get("sensor.zwift_map_next_segment")
+        assert nxt.state == "Epic KOM"
+        assert nxt.attributes["inside"] is True
+        assert nxt.attributes["remaining_m"] == pytest.approx(13_808 - 5_378, abs=1)
+        assert live.attributes["segments"] == [[4408, 13808, "climb", "Epic KOM"]]
+        assert live.attributes["segment"]["type"] == "climb"
+
         # The card's endpoint serves the live, still-growing track.
         client = await hass_client()
         resp = await client.get(f"/api/zwift_map/track/{BIG_LOOP}")

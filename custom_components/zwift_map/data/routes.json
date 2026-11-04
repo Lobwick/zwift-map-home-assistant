@@ -14,6 +14,603 @@
   "11": "Paris",
   "13": "Scotland"
  },
+ "segments": {
+  "ballon-sprint-rev": {
+   "name": "Ballon Sprint Rev.",
+   "type": "sprint",
+   "distance_m": 325,
+   "elevation_m": null,
+   "avg_grade": null
+  },
+  "broad-st": {
+   "name": "Broad St.",
+   "type": "sprint",
+   "distance_m": 283,
+   "elevation_m": null,
+   "avg_grade": null
+  },
+  "fuego-flats": {
+   "name": "Fuego Flats",
+   "type": "sprint",
+   "distance_m": 496,
+   "elevation_m": null,
+   "avg_grade": null
+  },
+  "fuego-flats-rev": {
+   "name": "Fuego Flats Rev.",
+   "type": "segment",
+   "distance_m": 7100,
+   "elevation_m": null,
+   "avg_grade": null
+  },
+  "lutece-sprint": {
+   "name": "Lutece Sprint",
+   "type": "sprint",
+   "distance_m": 148,
+   "elevation_m": null,
+   "avg_grade": null
+  },
+  "lutece-sprint-rev": {
+   "name": "Lutece Sprint Rev.",
+   "type": "sprint",
+   "distance_m": 225,
+   "elevation_m": null,
+   "avg_grade": null
+  },
+  "eglise-sprint": {
+   "name": "Église Sprint",
+   "type": "sprint",
+   "distance_m": 250,
+   "elevation_m": null,
+   "avg_grade": null
+  },
+  "monceau-sprint": {
+   "name": "Monceau Sprint",
+   "type": "sprint",
+   "distance_m": 300,
+   "elevation_m": null,
+   "avg_grade": null
+  },
+  "montmartre-kom": {
+   "name": "Montmartre KOM",
+   "type": "climb",
+   "distance_m": 1200,
+   "elevation_m": null,
+   "avg_grade": 4.2
+  },
+  "tchou-tchou-sprint": {
+   "name": "Tchou Tchou Sprint",
+   "type": "sprint",
+   "distance_m": 150,
+   "elevation_m": null,
+   "avg_grade": null
+  },
+  "marina-sprint": {
+   "name": "Marina Sprint",
+   "type": "sprint",
+   "distance_m": 338,
+   "elevation_m": null,
+   "avg_grade": null
+  },
+  "richmond-sprint": {
+   "name": "Richmond Sprint",
+   "type": "sprint",
+   "distance_m": 221,
+   "elevation_m": null,
+   "avg_grade": null
+  },
+  "new-york-sprint": {
+   "name": "New York Sprint",
+   "type": "sprint",
+   "distance_m": 150,
+   "elevation_m": null,
+   "avg_grade": -4.3
+  },
+  "new-york-sprint-rev": {
+   "name": "New York Sprint Rev.",
+   "type": "sprint",
+   "distance_m": 230,
+   "elevation_m": null,
+   "avg_grade": null
+  },
+  "london-sprint": {
+   "name": "London Sprint",
+   "type": "sprint",
+   "distance_m": 200,
+   "elevation_m": null,
+   "avg_grade": null
+  },
+  "london-sprint-rev": {
+   "name": "London Sprint Rev.",
+   "type": "sprint",
+   "distance_m": 200,
+   "elevation_m": null,
+   "avg_grade": null
+  },
+  "watopia-sprint": {
+   "name": "Watopia Sprint",
+   "type": "sprint",
+   "distance_m": 360,
+   "elevation_m": null,
+   "avg_grade": null
+  },
+  "yorkshire-sprint-rev": {
+   "name": "Yorkshire Sprint Rev.",
+   "type": "sprint",
+   "distance_m": 400,
+   "elevation_m": null,
+   "avg_grade": null
+  },
+  "alpe-du-zwift": {
+   "name": "Alpe du Zwift",
+   "type": "climb",
+   "distance_m": 12440,
+   "elevation_m": null,
+   "avg_grade": 8.5
+  },
+  "epic-kom": {
+   "name": "Epic KOM",
+   "type": "climb",
+   "distance_m": 9490,
+   "elevation_m": null,
+   "avg_grade": 4
+  },
+  "epic-kom-rev": {
+   "name": "Epic KOM Rev.",
+   "type": "climb",
+   "distance_m": 6270,
+   "elevation_m": null,
+   "avg_grade": 6.3
+  },
+  "hilly-loop": {
+   "name": "Hilly Loop",
+   "type": "segment",
+   "distance_m": 9010,
+   "elevation_m": null,
+   "avg_grade": null
+  },
+  "hilly-loop-rev": {
+   "name": "Hilly Loop Rev.",
+   "type": "segment",
+   "distance_m": 9010,
+   "elevation_m": null,
+   "avg_grade": null
+  },
+  "jungle-loop": {
+   "name": "Jungle Loop",
+   "type": "segment",
+   "distance_m": 7800,
+   "elevation_m": null,
+   "avg_grade": null
+  },
+  "jungle-loop-rev": {
+   "name": "Jungle Loop Rev.",
+   "type": "segment",
+   "distance_m": 7800,
+   "elevation_m": null,
+   "avg_grade": null
+  },
+  "titans-grove-kom": {
+   "name": "Titans Grove KOM",
+   "type": "climb",
+   "distance_m": 2600,
+   "elevation_m": null,
+   "avg_grade": 2.2
+  },
+  "titans-grove-kom-rev": {
+   "name": "Titans Grove KOM Rev.",
+   "type": "climb",
+   "distance_m": 890,
+   "elevation_m": null,
+   "avg_grade": 6.6
+  },
+  "volcano-circuit": {
+   "name": "Volcano Circuit",
+   "type": "segment",
+   "distance_m": 4200,
+   "elevation_m": null,
+   "avg_grade": null
+  },
+  "volcano-circuit-rev": {
+   "name": "Volcano Circuit Rev.",
+   "type": "segment",
+   "distance_m": 4200,
+   "elevation_m": null,
+   "avg_grade": null
+  },
+  "volcano-kom": {
+   "name": "Volcano KOM",
+   "type": "climb",
+   "distance_m": 3750,
+   "elevation_m": null,
+   "avg_grade": 3.2
+  },
+  "zwift-kom": {
+   "name": "Zwift KOM",
+   "type": "climb",
+   "distance_m": 900,
+   "elevation_m": null,
+   "avg_grade": 5
+  },
+  "zwift-kom-rev": {
+   "name": "Zwift KOM Rev.",
+   "type": "climb",
+   "distance_m": 2400,
+   "elevation_m": null,
+   "avg_grade": 2
+  },
+  "bologna-tt": {
+   "name": "Bologna TT",
+   "type": "climb",
+   "distance_m": 8000,
+   "elevation_m": null,
+   "avg_grade": 2.8
+  },
+  "central-park-loop-rev": {
+   "name": "Central Park Loop Rev.",
+   "type": "segment",
+   "distance_m": 9700,
+   "elevation_m": null,
+   "avg_grade": null
+  },
+  "new-york-kom": {
+   "name": "New York KOM",
+   "type": "climb",
+   "distance_m": 1400,
+   "elevation_m": null,
+   "avg_grade": 6.1
+  },
+  "new-york-kom-rev": {
+   "name": "New York KOM Rev.",
+   "type": "climb",
+   "distance_m": 1100,
+   "elevation_m": null,
+   "avg_grade": 5.7
+  },
+  "23rd-st": {
+   "name": "23rd St.",
+   "type": "climb",
+   "distance_m": 275,
+   "elevation_m": null,
+   "avg_grade": 10
+  },
+  "23rd-st-rev": {
+   "name": "23rd St. Rev",
+   "type": "climb",
+   "distance_m": 1100,
+   "elevation_m": null,
+   "avg_grade": 3.5
+  },
+  "richmond-kom": {
+   "name": "Richmond KOM",
+   "type": "climb",
+   "distance_m": 644,
+   "elevation_m": null,
+   "avg_grade": 6.4
+  },
+  "richmond-kom-rev": {
+   "name": "Richmond KOM Rev.",
+   "type": "climb",
+   "distance_m": 700,
+   "elevation_m": null,
+   "avg_grade": 3.4
+  },
+  "richmond-uci-course": {
+   "name": "Richmond UCI Cource",
+   "type": "segment",
+   "distance_m": 16200,
+   "elevation_m": null,
+   "avg_grade": null
+  },
+  "fox-hill": {
+   "name": "Fox Hill",
+   "type": "climb",
+   "distance_m": 2400,
+   "elevation_m": null,
+   "avg_grade": 4.9
+  },
+  "box-hill": {
+   "name": "Box Hill",
+   "type": "climb",
+   "distance_m": 3000,
+   "elevation_m": null,
+   "avg_grade": 4.3
+  },
+  "leith-hill": {
+   "name": "Leith Hill",
+   "type": "climb",
+   "distance_m": 1900,
+   "elevation_m": null,
+   "avg_grade": 6.8
+  },
+  "keith-hill": {
+   "name": "Keith Hill",
+   "type": "climb",
+   "distance_m": 4340,
+   "elevation_m": null,
+   "avg_grade": 5
+  },
+  "london-loop": {
+   "name": "London Loop",
+   "type": "segment",
+   "distance_m": 14960,
+   "elevation_m": null,
+   "avg_grade": null
+  },
+  "aqueduc-kom": {
+   "name": "Aqueduc KOM",
+   "type": "climb",
+   "distance_m": 420,
+   "elevation_m": null,
+   "avg_grade": 3
+  },
+  "aqueduc-kom-rev": {
+   "name": "Aqueduc KOM Rev.",
+   "type": "climb",
+   "distance_m": 403,
+   "elevation_m": null,
+   "avg_grade": 5
+  },
+  "petit-kom": {
+   "name": "Petit KOM",
+   "type": "climb",
+   "distance_m": 2700,
+   "elevation_m": null,
+   "avg_grade": 4
+  },
+  "ventoux-kom": {
+   "name": "Ventoux KOM",
+   "type": "climb",
+   "distance_m": 19000,
+   "elevation_m": null,
+   "avg_grade": 8
+  },
+  "innsbruck-kom": {
+   "name": "Innsbruck KOM",
+   "type": "climb",
+   "distance_m": 7400,
+   "elevation_m": null,
+   "avg_grade": 6
+  },
+  "innsbruck-kom-rev": {
+   "name": "Innsbruck KOM Rev.",
+   "type": "climb",
+   "distance_m": 5790,
+   "elevation_m": null,
+   "avg_grade": 8
+  },
+  "yorkshire-kom": {
+   "name": "Yorkshire KOM",
+   "type": "climb",
+   "distance_m": 1200,
+   "elevation_m": null,
+   "avg_grade": 5.5
+  },
+  "yorkshire-kom-rev": {
+   "name": "Yorkshire KOM Rev.",
+   "type": "climb",
+   "distance_m": 1200,
+   "elevation_m": null,
+   "avg_grade": 3.8
+  },
+  "crit-city-rev": {
+   "name": "Crit City Rev.",
+   "type": "segment",
+   "distance_m": 1950,
+   "elevation_m": null,
+   "avg_grade": null
+  },
+  "champs-elysees": {
+   "name": "Champs Elysées",
+   "type": "segment",
+   "distance_m": 6620,
+   "elevation_m": null,
+   "avg_grade": null
+  },
+  "champs-elysees-rev": {
+   "name": "Champs Elysées Rev.",
+   "type": "segment",
+   "distance_m": 6620,
+   "elevation_m": null,
+   "avg_grade": null
+  },
+  "castle-kom": {
+   "name": "Castle KOM",
+   "type": "climb",
+   "distance_m": 2690,
+   "elevation_m": null,
+   "avg_grade": 2.45
+  },
+  "temple-kom-from-fishing-village-side": {
+   "name": "Temple KOM from Fishing Village Side",
+   "type": "climb",
+   "distance_m": 2510,
+   "elevation_m": null,
+   "avg_grade": 3.95
+  },
+  "temple-kom-from-castle-side": {
+   "name": "Temple KOM from Castle Side",
+   "type": "climb",
+   "distance_m": 1880,
+   "elevation_m": null,
+   "avg_grade": 3.59
+  },
+  "rooftop-kom": {
+   "name": "Rooftop KOM",
+   "type": "climb",
+   "distance_m": 1870,
+   "elevation_m": null,
+   "avg_grade": 2.7
+  },
+  "tower-sprint": {
+   "name": "Tower Sprint",
+   "type": "sprint",
+   "distance_m": 310,
+   "elevation_m": null,
+   "avg_grade": null
+  },
+  "railway-sprint": {
+   "name": "Railway Sprint",
+   "type": "sprint",
+   "distance_m": 490,
+   "elevation_m": null,
+   "avg_grade": null
+  },
+  "sgurr-summit-south": {
+   "name": "Sgurr Summit South",
+   "type": "climb",
+   "distance_m": 1000,
+   "elevation_m": null,
+   "avg_grade": 3.3
+  },
+  "sgurr-summit-north": {
+   "name": "Sgurr Summit North",
+   "type": "climb",
+   "distance_m": 1600,
+   "elevation_m": null,
+   "avg_grade": 3.7
+  },
+  "woodland-sprint": {
+   "name": "Woodland Sprint",
+   "type": "sprint",
+   "distance_m": 500,
+   "elevation_m": null,
+   "avg_grade": -2.2
+  },
+  "itza-kom": {
+   "name": "Itza KOM",
+   "type": "climb",
+   "distance_m": 3750,
+   "elevation_m": 95,
+   "avg_grade": 2
+  },
+  "mayan-mountainside-kom": {
+   "name": "Mayan Mountainside KOM",
+   "type": "climb",
+   "distance_m": 1990,
+   "elevation_m": 62,
+   "avg_grade": 3.1
+  },
+  "the-grade-kom": {
+   "name": "The Grade KOM",
+   "type": "climb",
+   "distance_m": 3520,
+   "elevation_m": 305,
+   "avg_grade": 8.6
+  },
+  "radio-tower-kom": {
+   "name": "Radio Tower KOM",
+   "type": "climb",
+   "distance_m": 1200,
+   "elevation_m": null,
+   "avg_grade": 12.9
+  },
+  "jarvis-kom": {
+   "name": "Jarvis KOM",
+   "type": "climb",
+   "distance_m": 1800,
+   "elevation_m": null,
+   "avg_grade": 1.8
+  },
+  "jarvis-kom-rev": {
+   "name": "Jarvis KOM Rev.",
+   "type": "climb",
+   "distance_m": 1300,
+   "elevation_m": null,
+   "avg_grade": 3.1
+  },
+  "jarvis-sprint": {
+   "name": "Jarvis Sprint",
+   "type": "sprint",
+   "distance_m": 200,
+   "elevation_m": null,
+   "avg_grade": -0.1
+  },
+  "jarvis-sprint-rev": {
+   "name": "Jarvis Sprint Rev.",
+   "type": "sprint",
+   "distance_m": 200,
+   "elevation_m": null,
+   "avg_grade": 0.2
+  },
+  "center-sprint": {
+   "name": "Center Sprint",
+   "type": "sprint",
+   "distance_m": 200,
+   "elevation_m": null,
+   "avg_grade": -2.2
+  },
+  "center-sprint-rev": {
+   "name": "Center Sprint Rev.",
+   "type": "sprint",
+   "distance_m": 200,
+   "elevation_m": null,
+   "avg_grade": 2.4
+  },
+  "the-peristyle-sprint": {
+   "name": "The Peristyle Sprint",
+   "type": "sprint",
+   "distance_m": 400,
+   "elevation_m": null,
+   "avg_grade": 0.6
+  },
+  "the-peristyle-sprint-rev": {
+   "name": "The Peristyle Sprint Rev.",
+   "type": "sprint",
+   "distance_m": 400,
+   "elevation_m": null,
+   "avg_grade": 0.1
+  },
+  "the-hill-kom": {
+   "name": "The Hill KOM",
+   "type": "climb",
+   "distance_m": 500,
+   "elevation_m": null,
+   "avg_grade": 3.7
+  },
+  "manhattan-sprint": {
+   "name": "Manhattan Sprint",
+   "type": "sprint",
+   "distance_m": 250,
+   "elevation_m": null,
+   "avg_grade": 0.3
+  },
+  "manhattan-sprint-rev": {
+   "name": "Manhattan Sprint Rev.",
+   "type": "sprint",
+   "distance_m": 250,
+   "elevation_m": null,
+   "avg_grade": 1.3
+  },
+  "brooklyn-bridge-kom": {
+   "name": "Brooklyn Bridge KOM",
+   "type": "climb",
+   "distance_m": 2000,
+   "elevation_m": null,
+   "avg_grade": 1.7
+  },
+  "jarvis-lap": {
+   "name": "Jarvis Lap",
+   "type": "segment",
+   "distance_m": 4840,
+   "elevation_m": null,
+   "avg_grade": -0.2
+  },
+  "jarvis-lap-rev": {
+   "name": "Jarvis Lap Rev.",
+   "type": "segment",
+   "distance_m": 4840,
+   "elevation_m": null,
+   "avg_grade": 0.2
+  },
+  "tidepool-sprint-rev": {
+   "name": "Tidepool Sprint Rev.",
+   "type": "sprint",
+   "distance_m": 350,
+   "elevation_m": null,
+   "avg_grade": 0
+  }
+ },
  "routes": [
   {
    "id": 2843604888,
@@ -29,6 +626,13 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "bologna-tt",
+     0,
+     8031
+    ]
    ]
   },
   {
@@ -45,7 +649,8 @@
    "sports": [
     "running",
     "cycling"
-   ]
+   ],
+   "segments": []
   },
   {
    "id": 2875658892,
@@ -61,6 +666,13 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "crit-city-rev",
+     0,
+     1943
+    ]
    ]
   },
   {
@@ -77,7 +689,8 @@
    "sports": [
     "running",
     "cycling"
-   ]
+   ],
+   "segments": []
   },
   {
    "id": 3919912289,
@@ -93,6 +706,18 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "aqueduc-kom-rev",
+     12503,
+     12911
+    ],
+    [
+     "petit-kom",
+     16428,
+     19114
+    ]
    ]
   },
   {
@@ -109,7 +734,8 @@
    "sports": [
     "running",
     "cycling"
-   ]
+   ],
+   "segments": []
   },
   {
    "id": 1600198346,
@@ -125,7 +751,8 @@
    "sports": [
     "running",
     "cycling"
-   ]
+   ],
+   "segments": []
   },
   {
    "id": 986252325,
@@ -141,6 +768,18 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "aqueduc-kom",
+     10843,
+     11258
+    ],
+    [
+     "marina-sprint",
+     23842,
+     24187
+    ]
    ]
   },
   {
@@ -157,6 +796,68 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "aqueduc-kom-rev",
+     12498,
+     12910
+    ],
+    [
+     "ballon-sprint-rev",
+     16897,
+     17233
+    ],
+    [
+     "aqueduc-kom-rev",
+     36603,
+     37005
+    ],
+    [
+     "petit-kom",
+     40539,
+     43211
+    ],
+    [
+     "petit-kom",
+     54417,
+     57102
+    ],
+    [
+     "aqueduc-kom",
+     71063,
+     71489
+    ],
+    [
+     "marina-sprint",
+     84056,
+     84398
+    ],
+    [
+     "aqueduc-kom",
+     95171,
+     95586
+    ],
+    [
+     "marina-sprint",
+     108165,
+     108507
+    ],
+    [
+     "ballon-sprint-rev",
+     115936,
+     116261
+    ],
+    [
+     "aqueduc-kom-rev",
+     135617,
+     136029
+    ],
+    [
+     "petit-kom",
+     139542,
+     142224
+    ]
    ]
   },
   {
@@ -173,6 +874,13 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "petit-kom",
+     5421,
+     8104
+    ]
    ]
   },
   {
@@ -189,6 +897,13 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "petit-kom",
+     17079,
+     19768
+    ]
    ]
   },
   {
@@ -205,6 +920,18 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "aqueduc-kom",
+     6876,
+     7296
+    ],
+    [
+     "petit-kom",
+     34149,
+     36827
+    ]
    ]
   },
   {
@@ -221,6 +948,13 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "petit-kom",
+     8086,
+     10762
+    ]
    ]
   },
   {
@@ -237,7 +971,8 @@
    "sports": [
     "running",
     "cycling"
-   ]
+   ],
+   "segments": []
   },
   {
    "id": 941280950,
@@ -253,6 +988,23 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "ballon-sprint-rev",
+     15824,
+     16151
+    ],
+    [
+     "aqueduc-kom-rev",
+     24064,
+     24475
+    ],
+    [
+     "petit-kom",
+     27990,
+     30678
+    ]
    ]
   },
   {
@@ -269,6 +1021,33 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "aqueduc-kom-rev",
+     12492,
+     12899
+    ],
+    [
+     "ballon-sprint-rev",
+     16885,
+     17225
+    ],
+    [
+     "aqueduc-kom",
+     33027,
+     33450
+    ],
+    [
+     "marina-sprint",
+     46009,
+     46369
+    ],
+    [
+     "petit-kom",
+     54341,
+     57026
+    ]
    ]
   },
   {
@@ -285,7 +1064,8 @@
    "sports": [
     "running",
     "cycling"
-   ]
+   ],
+   "segments": []
   },
   {
    "id": 1776635757,
@@ -301,6 +1081,18 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "aqueduc-kom-rev",
+     12495,
+     12906
+    ],
+    [
+     "ballon-sprint-rev",
+     16884,
+     17222
+    ]
    ]
   },
   {
@@ -316,7 +1108,8 @@
    "event_only": false,
    "sports": [
     "running"
-   ]
+   ],
+   "segments": []
   },
   {
    "id": 872351836,
@@ -332,6 +1125,18 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "aqueduc-kom",
+     5750,
+     6169
+    ],
+    [
+     "marina-sprint",
+     18744,
+     19094
+    ]
    ]
   },
   {
@@ -348,6 +1153,28 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "aqueduc-kom-rev",
+     8416,
+     8814
+    ],
+    [
+     "ballon-sprint-rev",
+     12806,
+     13142
+    ],
+    [
+     "aqueduc-kom",
+     43450,
+     43874
+    ],
+    [
+     "marina-sprint",
+     59166,
+     59511
+    ]
    ]
   },
   {
@@ -364,6 +1191,18 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "aqueduc-kom-rev",
+     8406,
+     8817
+    ],
+    [
+     "ballon-sprint-rev",
+     12813,
+     13131
+    ]
    ]
   },
   {
@@ -380,6 +1219,33 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "ballon-sprint-rev",
+     3484,
+     3796
+    ],
+    [
+     "aqueduc-kom-rev",
+     23149,
+     23564
+    ],
+    [
+     "petit-kom",
+     27077,
+     29753
+    ],
+    [
+     "aqueduc-kom",
+     43694,
+     44106
+    ],
+    [
+     "marina-sprint",
+     56683,
+     57029
+    ]
    ]
   },
   {
@@ -396,7 +1262,8 @@
    "sports": [
     "running",
     "cycling"
-   ]
+   ],
+   "segments": []
   },
   {
    "id": 1975694067,
@@ -411,7 +1278,8 @@
    "event_only": false,
    "sports": [
     "running"
-   ]
+   ],
+   "segments": []
   },
   {
    "id": 2573468147,
@@ -427,6 +1295,13 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "ventoux-kom",
+     1819,
+     20870
+    ]
    ]
   },
   {
@@ -443,6 +1318,13 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "innsbruck-kom",
+     3131,
+     10544
+    ]
    ]
   },
   {
@@ -459,6 +1341,18 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "innsbruck-kom-rev",
+     2899,
+     8641
+    ],
+    [
+     "innsbruck-kom",
+     26861,
+     34277
+    ]
    ]
   },
   {
@@ -475,6 +1369,13 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "innsbruck-kom",
+     29709,
+     37137
+    ]
    ]
   },
   {
@@ -491,6 +1392,13 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "innsbruck-kom-rev",
+     7205,
+     12942
+    ]
    ]
   },
   {
@@ -507,7 +1415,8 @@
    "sports": [
     "running",
     "cycling"
-   ]
+   ],
+   "segments": []
   },
   {
    "id": 156457316,
@@ -523,6 +1432,18 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "innsbruck-kom",
+     3129,
+     10553
+    ],
+    [
+     "innsbruck-kom",
+     16803,
+     24223
+    ]
    ]
   },
   {
@@ -539,6 +1460,13 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "innsbruck-kom-rev",
+     2916,
+     8642
+    ]
    ]
   },
   {
@@ -555,7 +1483,8 @@
    "sports": [
     "running",
     "cycling"
-   ]
+   ],
+   "segments": []
   },
   {
    "id": 3599973269,
@@ -571,6 +1500,13 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "london-sprint",
+     5260,
+     5443
+    ]
    ]
   },
   {
@@ -587,6 +1523,13 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "box-hill",
+     15228,
+     18227
+    ]
    ]
   },
   {
@@ -603,7 +1546,8 @@
    "sports": [
     "running",
     "cycling"
-   ]
+   ],
+   "segments": []
   },
   {
    "id": 3276403604,
@@ -619,6 +1563,13 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "box-hill",
+     12432,
+     15428
+    ]
    ]
   },
   {
@@ -635,6 +1586,13 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "fox-hill",
+     3119,
+     5514
+    ]
    ]
   },
   {
@@ -651,6 +1609,13 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "london-sprint",
+     23368,
+     23555
+    ]
    ]
   },
   {
@@ -667,6 +1632,13 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "leith-hill",
+     16197,
+     18149
+    ]
    ]
   },
   {
@@ -683,6 +1655,13 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "keith-hill",
+     3255,
+     7469
+    ]
    ]
   },
   {
@@ -699,6 +1678,18 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "london-sprint",
+     14316,
+     14499
+    ],
+    [
+     "keith-hill",
+     31951,
+     36160
+    ]
    ]
   },
   {
@@ -715,6 +1706,23 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "london-sprint",
+     14309,
+     14502
+    ],
+    [
+     "london-sprint",
+     25949,
+     26141
+    ],
+    [
+     "leith-hill",
+     39505,
+     41454
+    ]
    ]
   },
   {
@@ -731,6 +1739,18 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "london-sprint",
+     6759,
+     6951
+    ],
+    [
+     "box-hill",
+     11744,
+     14732
+    ]
    ]
   },
   {
@@ -747,6 +1767,18 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "fox-hill",
+     2780,
+     5186
+    ],
+    [
+     "london-sprint-rev",
+     12762,
+     12952
+    ]
    ]
   },
   {
@@ -763,6 +1795,13 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "london-sprint",
+     15721,
+     15904
+    ]
    ]
   },
   {
@@ -779,7 +1818,8 @@
    "sports": [
     "running",
     "cycling"
-   ]
+   ],
+   "segments": []
   },
   {
    "id": 913172163,
@@ -795,6 +1835,18 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "london-loop",
+     0,
+     14826
+    ],
+    [
+     "box-hill",
+     6285,
+     9258
+    ]
    ]
   },
   {
@@ -811,6 +1863,13 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "fox-hill",
+     3131,
+     5534
+    ]
    ]
   },
   {
@@ -827,6 +1886,118 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "london-loop",
+     0,
+     14806
+    ],
+    [
+     "box-hill",
+     6247,
+     9212
+    ],
+    [
+     "london-loop",
+     14806,
+     29571
+    ],
+    [
+     "box-hill",
+     21058,
+     24021
+    ],
+    [
+     "london-loop",
+     29590,
+     44365
+    ],
+    [
+     "box-hill",
+     35843,
+     38808
+    ],
+    [
+     "london-loop",
+     44383,
+     59121
+    ],
+    [
+     "box-hill",
+     50637,
+     53579
+    ],
+    [
+     "london-loop",
+     59121,
+     73916
+    ],
+    [
+     "box-hill",
+     65399,
+     68370
+    ],
+    [
+     "london-loop",
+     73916,
+     88683
+    ],
+    [
+     "box-hill",
+     80192,
+     83160
+    ],
+    [
+     "london-loop",
+     88701,
+     103465
+    ],
+    [
+     "box-hill",
+     94976,
+     97942
+    ],
+    [
+     "london-loop",
+     103483,
+     118244
+    ],
+    [
+     "box-hill",
+     109761,
+     112727
+    ],
+    [
+     "london-loop",
+     118262,
+     133008
+    ],
+    [
+     "box-hill",
+     124537,
+     127490
+    ],
+    [
+     "london-loop",
+     133027,
+     147769
+    ],
+    [
+     "box-hill",
+     139301,
+     142253
+    ],
+    [
+     "london-loop",
+     147787,
+     162524
+    ],
+    [
+     "box-hill",
+     154060,
+     157009
+    ]
    ]
   },
   {
@@ -843,6 +2014,53 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "london-loop",
+     0,
+     14831
+    ],
+    [
+     "box-hill",
+     6278,
+     9283
+    ],
+    [
+     "london-loop",
+     14840,
+     29679
+    ],
+    [
+     "box-hill",
+     21132,
+     24131
+    ],
+    [
+     "london-loop",
+     29699,
+     44529
+    ],
+    [
+     "box-hill",
+     35982,
+     38979
+    ],
+    [
+     "london-loop",
+     44548,
+     59381
+    ],
+    [
+     "box-hill",
+     50832,
+     53826
+    ],
+    [
+     "london-sprint-rev",
+     68768,
+     68949
+    ]
    ]
   },
   {
@@ -859,6 +2077,23 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "fox-hill",
+     2185,
+     4587
+    ],
+    [
+     "london-sprint-rev",
+     12150,
+     12340
+    ],
+    [
+     "box-hill",
+     17461,
+     20458
+    ]
    ]
   },
   {
@@ -875,6 +2110,23 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "fox-hill",
+     484,
+     2889
+    ],
+    [
+     "leith-hill",
+     10250,
+     12211
+    ],
+    [
+     "keith-hill",
+     25400,
+     29594
+    ]
    ]
   },
   {
@@ -891,6 +2143,28 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "london-sprint",
+     14277,
+     14468
+    ],
+    [
+     "fox-hill",
+     31768,
+     34166
+    ],
+    [
+     "london-sprint-rev",
+     41706,
+     41887
+    ],
+    [
+     "box-hill",
+     47004,
+     49984
+    ]
    ]
   },
   {
@@ -907,6 +2181,18 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "london-sprint-rev",
+     13969,
+     14154
+    ],
+    [
+     "leith-hill",
+     23052,
+     24986
+    ]
    ]
   },
   {
@@ -923,6 +2209,13 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "fox-hill",
+     2185,
+     4598
+    ]
    ]
   },
   {
@@ -939,7 +2232,8 @@
    "sports": [
     "running",
     "cycling"
-   ]
+   ],
+   "segments": []
   },
   {
    "id": 3706527503,
@@ -955,7 +2249,8 @@
    "sports": [
     "running",
     "cycling"
-   ]
+   ],
+   "segments": []
   },
   {
    "id": 1033940053,
@@ -970,7 +2265,8 @@
    "event_only": false,
    "sports": [
     "running"
-   ]
+   ],
+   "segments": []
   },
   {
    "id": 3742187716,
@@ -986,6 +2282,13 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "tower-sprint",
+     20747,
+     21054
+    ]
    ]
   },
   {
@@ -1002,6 +2305,18 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "castle-kom",
+     1432,
+     4097
+    ],
+    [
+     "temple-kom-from-castle-side",
+     5342,
+     7238
+    ]
    ]
   },
   {
@@ -1018,6 +2333,18 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "railway-sprint",
+     3886,
+     4380
+    ],
+    [
+     "temple-kom-from-fishing-village-side",
+     21064,
+     23582
+    ]
    ]
   },
   {
@@ -1034,7 +2361,8 @@
    "sports": [
     "running",
     "cycling"
-   ]
+   ],
+   "segments": []
   },
   {
    "id": 525689100,
@@ -1050,6 +2378,13 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "temple-kom-from-fishing-village-side",
+     8872,
+     11371
+    ]
    ]
   },
   {
@@ -1066,6 +2401,13 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "rooftop-kom",
+     15835,
+     17712
+    ]
    ]
   },
   {
@@ -1082,7 +2424,8 @@
    "sports": [
     "running",
     "cycling"
-   ]
+   ],
+   "segments": []
   },
   {
    "id": 2980619755,
@@ -1098,7 +2441,8 @@
    "sports": [
     "running",
     "cycling"
-   ]
+   ],
+   "segments": []
   },
   {
    "id": 468624015,
@@ -1114,7 +2458,8 @@
    "sports": [
     "running",
     "cycling"
-   ]
+   ],
+   "segments": []
   },
   {
    "id": 3282611437,
@@ -1130,7 +2475,8 @@
    "sports": [
     "running",
     "cycling"
-   ]
+   ],
+   "segments": []
   },
   {
    "id": 2140131142,
@@ -1146,7 +2492,8 @@
    "sports": [
     "running",
     "cycling"
-   ]
+   ],
+   "segments": []
   },
   {
    "id": 211138252,
@@ -1162,7 +2509,8 @@
    "sports": [
     "running",
     "cycling"
-   ]
+   ],
+   "segments": []
   },
   {
    "id": 1562187590,
@@ -1178,6 +2526,13 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "temple-kom-from-fishing-village-side",
+     6551,
+     9051
+    ]
    ]
   },
   {
@@ -1194,6 +2549,13 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "temple-kom-from-castle-side",
+     7147,
+     9040
+    ]
    ]
   },
   {
@@ -1210,6 +2572,13 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "tower-sprint",
+     7377,
+     7692
+    ]
    ]
   },
   {
@@ -1226,7 +2595,8 @@
    "sports": [
     "running",
     "cycling"
-   ]
+   ],
+   "segments": []
   },
   {
    "id": 186601870,
@@ -1242,6 +2612,13 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "tower-sprint",
+     2528,
+     2842
+    ]
    ]
   },
   {
@@ -1258,6 +2635,13 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "tower-sprint",
+     36643,
+     36967
+    ]
    ]
   },
   {
@@ -1274,7 +2658,8 @@
    "sports": [
     "running",
     "cycling"
-   ]
+   ],
+   "segments": []
   },
   {
    "id": 525587103,
@@ -1289,7 +2674,8 @@
    "event_only": false,
    "sports": [
     "running"
-   ]
+   ],
+   "segments": []
   },
   {
    "id": 2919739330,
@@ -1305,6 +2691,18 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "tidepool-sprint-rev",
+     6514,
+     6836
+    ],
+    [
+     "tidepool-sprint-rev",
+     18072,
+     18390
+    ]
    ]
   },
   {
@@ -1321,6 +2719,18 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "tower-sprint",
+     11173,
+     11485
+    ],
+    [
+     "rooftop-kom",
+     16569,
+     18440
+    ]
    ]
   },
   {
@@ -1337,7 +2747,8 @@
    "sports": [
     "running",
     "cycling"
-   ]
+   ],
+   "segments": []
   },
   {
    "id": 1367364772,
@@ -1353,6 +2764,13 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "rooftop-kom",
+     14261,
+     16139
+    ]
    ]
   },
   {
@@ -1369,6 +2787,13 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "tower-sprint",
+     2108,
+     2419
+    ]
    ]
   },
   {
@@ -1385,6 +2810,18 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "tower-sprint",
+     2527,
+     2842
+    ],
+    [
+     "rooftop-kom",
+     9435,
+     11314
+    ]
    ]
   },
   {
@@ -1401,6 +2838,13 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "railway-sprint",
+     200,
+     683
+    ]
    ]
   },
   {
@@ -1417,6 +2861,13 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "tower-sprint",
+     18977,
+     19297
+    ]
    ]
   },
   {
@@ -1433,6 +2884,13 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "rooftop-kom",
+     72,
+     1946
+    ]
    ]
   },
   {
@@ -1449,6 +2907,13 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "temple-kom-from-fishing-village-side",
+     658,
+     3174
+    ]
    ]
   },
   {
@@ -1465,6 +2930,23 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "railway-sprint",
+     17748,
+     18243
+    ],
+    [
+     "castle-kom",
+     30233,
+     32917
+    ],
+    [
+     "temple-kom-from-fishing-village-side",
+     35189,
+     37701
+    ]
    ]
   },
   {
@@ -1481,7 +2963,8 @@
    "sports": [
     "running",
     "cycling"
-   ]
+   ],
+   "segments": []
   },
   {
    "id": 3523806426,
@@ -1497,7 +2980,8 @@
    "sports": [
     "running",
     "cycling"
-   ]
+   ],
+   "segments": []
   },
   {
    "id": 3356878261,
@@ -1513,6 +2997,13 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "railway-sprint",
+     7647,
+     8130
+    ]
    ]
   },
   {
@@ -1529,7 +3020,8 @@
    "sports": [
     "running",
     "cycling"
-   ]
+   ],
+   "segments": []
   },
   {
    "id": 2896159042,
@@ -1545,6 +3037,23 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "rooftop-kom",
+     2598,
+     4458
+    ],
+    [
+     "castle-kom",
+     14371,
+     17033
+    ],
+    [
+     "temple-kom-from-fishing-village-side",
+     19315,
+     21819
+    ]
    ]
   },
   {
@@ -1561,7 +3070,8 @@
    "sports": [
     "running",
     "cycling"
-   ]
+   ],
+   "segments": []
   },
   {
    "id": 3636436865,
@@ -1577,6 +3087,18 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "railway-sprint",
+     6284,
+     6776
+    ],
+    [
+     "rooftop-kom",
+     34276,
+     36143
+    ]
    ]
   },
   {
@@ -1593,7 +3115,8 @@
    "sports": [
     "running",
     "cycling"
-   ]
+   ],
+   "segments": []
   },
   {
    "id": 362278484,
@@ -1609,7 +3132,8 @@
    "sports": [
     "running",
     "cycling"
-   ]
+   ],
+   "segments": []
   },
   {
    "id": 1457923570,
@@ -1625,6 +3149,13 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "tower-sprint",
+     1609,
+     1916
+    ]
    ]
   },
   {
@@ -1641,7 +3172,8 @@
    "sports": [
     "running",
     "cycling"
-   ]
+   ],
+   "segments": []
   },
   {
    "id": 4092230492,
@@ -1657,6 +3189,18 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "tower-sprint",
+     5736,
+     6038
+    ],
+    [
+     "tidepool-sprint-rev",
+     13059,
+     13381
+    ]
    ]
   },
   {
@@ -1673,6 +3217,13 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "temple-kom-from-castle-side",
+     2695,
+     4583
+    ]
    ]
   },
   {
@@ -1689,7 +3240,8 @@
    "sports": [
     "running",
     "cycling"
-   ]
+   ],
+   "segments": []
   },
   {
    "id": 811898717,
@@ -1705,6 +3257,13 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "temple-kom-from-fishing-village-side",
+     14917,
+     17429
+    ]
    ]
   },
   {
@@ -1720,7 +3279,8 @@
    "event_only": false,
    "sports": [
     "running"
-   ]
+   ],
+   "segments": []
   },
   {
    "id": 2521625692,
@@ -1736,7 +3296,8 @@
    "sports": [
     "running",
     "cycling"
-   ]
+   ],
+   "segments": []
   },
   {
    "id": 2436095601,
@@ -1752,6 +3313,38 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "new-york-sprint",
+     7194,
+     7339
+    ],
+    [
+     "new-york-kom",
+     8400,
+     9762
+    ],
+    [
+     "new-york-sprint",
+     29724,
+     29882
+    ],
+    [
+     "new-york-kom",
+     30930,
+     32292
+    ],
+    [
+     "new-york-sprint",
+     52253,
+     52411
+    ],
+    [
+     "new-york-kom",
+     53459,
+     54825
+    ]
    ]
   },
   {
@@ -1768,6 +3361,13 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "new-york-sprint-rev",
+     9930,
+     10176
+    ]
    ]
   },
   {
@@ -1784,6 +3384,18 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "the-peristyle-sprint-rev",
+     1188,
+     1597
+    ],
+    [
+     "center-sprint",
+     3085,
+     3274
+    ]
    ]
   },
   {
@@ -1799,6 +3411,18 @@
    "event_only": false,
    "sports": [
     "running"
+   ],
+   "segments": [
+    [
+     "the-peristyle-sprint-rev",
+     1188,
+     1597
+    ],
+    [
+     "center-sprint",
+     3085,
+     3274
+    ]
    ]
   },
   {
@@ -1814,7 +3438,8 @@
    "event_only": false,
    "sports": [
     "running"
-   ]
+   ],
+   "segments": []
   },
   {
    "id": 2101060245,
@@ -1830,6 +3455,33 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "the-peristyle-sprint",
+     2203,
+     2612
+    ],
+    [
+     "the-hill-kom",
+     4113,
+     4638
+    ],
+    [
+     "manhattan-sprint",
+     9849,
+     10104
+    ],
+    [
+     "new-york-sprint",
+     27305,
+     27459
+    ],
+    [
+     "manhattan-sprint-rev",
+     36211,
+     36455
+    ]
    ]
   },
   {
@@ -1846,6 +3498,18 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "brooklyn-bridge-kom",
+     2249,
+     4239
+    ],
+    [
+     "manhattan-sprint",
+     6972,
+     7227
+    ]
    ]
   },
   {
@@ -1862,6 +3526,33 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "the-peristyle-sprint-rev",
+     1185,
+     1593
+    ],
+    [
+     "center-sprint",
+     3077,
+     3271
+    ],
+    [
+     "the-hill-kom",
+     4161,
+     4681
+    ],
+    [
+     "manhattan-sprint",
+     9889,
+     10133
+    ],
+    [
+     "new-york-kom",
+     22721,
+     24089
+    ]
    ]
   },
   {
@@ -1878,6 +3569,28 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "new-york-kom-rev",
+     2765,
+     3889
+    ],
+    [
+     "new-york-sprint",
+     13141,
+     13293
+    ],
+    [
+     "new-york-kom",
+     24236,
+     25594
+    ],
+    [
+     "new-york-sprint-rev",
+     27998,
+     28220
+    ]
    ]
   },
   {
@@ -1893,6 +3606,13 @@
    "event_only": false,
    "sports": [
     "running"
+   ],
+   "segments": [
+    [
+     "new-york-sprint-rev",
+     5705,
+     5946
+    ]
    ]
   },
   {
@@ -1909,6 +3629,43 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "the-peristyle-sprint",
+     2212,
+     2607
+    ],
+    [
+     "the-hill-kom",
+     4122,
+     4644
+    ],
+    [
+     "manhattan-sprint",
+     9855,
+     10099
+    ],
+    [
+     "new-york-kom-rev",
+     19591,
+     20731
+    ],
+    [
+     "new-york-sprint",
+     37594,
+     37749
+    ],
+    [
+     "brooklyn-bridge-kom",
+     57615,
+     59616
+    ],
+    [
+     "manhattan-sprint-rev",
+     73337,
+     73568
+    ]
    ]
   },
   {
@@ -1925,6 +3682,13 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "new-york-sprint",
+     1209,
+     1360
+    ]
    ]
   },
   {
@@ -1941,6 +3705,13 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "new-york-sprint-rev",
+     7643,
+     7866
+    ]
    ]
   },
   {
@@ -1957,6 +3728,18 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "new-york-kom-rev",
+     1464,
+     2606
+    ],
+    [
+     "new-york-sprint",
+     6704,
+     6856
+    ]
    ]
   },
   {
@@ -1973,6 +3756,13 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "new-york-kom",
+     2826,
+     4184
+    ]
    ]
   },
   {
@@ -1989,6 +3779,28 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "the-peristyle-sprint",
+     2208,
+     2603
+    ],
+    [
+     "the-hill-kom",
+     4118,
+     4641
+    ],
+    [
+     "manhattan-sprint",
+     9852,
+     10096
+    ],
+    [
+     "brooklyn-bridge-kom",
+     21066,
+     23068
+    ]
    ]
   },
   {
@@ -2005,6 +3817,13 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "new-york-sprint-rev",
+     18686,
+     18914
+    ]
    ]
   },
   {
@@ -2020,7 +3839,8 @@
    "event_only": false,
    "sports": [
     "running"
-   ]
+   ],
+   "segments": []
   },
   {
    "id": 112312944,
@@ -2036,6 +3856,28 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "center-sprint",
+     1537,
+     1736
+    ],
+    [
+     "the-peristyle-sprint-rev",
+     2944,
+     3351
+    ],
+    [
+     "center-sprint",
+     4844,
+     5037
+    ],
+    [
+     "the-hill-kom",
+     5910,
+     6436
+    ]
    ]
   },
   {
@@ -2052,6 +3894,18 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "new-york-sprint",
+     7285,
+     7440
+    ],
+    [
+     "new-york-kom",
+     8498,
+     9866
+    ]
    ]
   },
   {
@@ -2068,6 +3922,18 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "new-york-kom-rev",
+     11460,
+     12588
+    ],
+    [
+     "new-york-sprint-rev",
+     14808,
+     15035
+    ]
    ]
   },
   {
@@ -2084,6 +3950,18 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "new-york-kom-rev",
+     2751,
+     3893
+    ],
+    [
+     "new-york-sprint-rev",
+     6105,
+     6330
+    ]
    ]
   },
   {
@@ -2100,6 +3978,48 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "new-york-sprint",
+     1234,
+     1380
+    ],
+    [
+     "new-york-sprint",
+     4037,
+     4196
+    ],
+    [
+     "new-york-sprint",
+     6849,
+     6997
+    ],
+    [
+     "new-york-sprint",
+     9651,
+     9798
+    ],
+    [
+     "new-york-sprint",
+     12454,
+     12599
+    ],
+    [
+     "new-york-sprint",
+     15256,
+     15414
+    ],
+    [
+     "new-york-sprint",
+     18068,
+     18216
+    ],
+    [
+     "new-york-kom-rev",
+     19693,
+     20831
+    ]
    ]
   },
   {
@@ -2116,6 +4036,13 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "new-york-sprint",
+     2642,
+     2797
+    ]
    ]
   },
   {
@@ -2132,6 +4059,13 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "new-york-sprint-rev",
+     2542,
+     2771
+    ]
    ]
   },
   {
@@ -2148,6 +4082,13 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "new-york-kom-rev",
+     9035,
+     10176
+    ]
    ]
   },
   {
@@ -2164,6 +4105,28 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "manhattan-sprint-rev",
+     4440,
+     4679
+    ],
+    [
+     "center-sprint-rev",
+     11265,
+     11459
+    ],
+    [
+     "manhattan-sprint",
+     18704,
+     18955
+    ],
+    [
+     "brooklyn-bridge-kom",
+     29920,
+     31927
+    ]
    ]
   },
   {
@@ -2180,6 +4143,28 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "new-york-sprint-rev",
+     7678,
+     7909
+    ],
+    [
+     "new-york-sprint-rev",
+     16957,
+     17190
+    ],
+    [
+     "new-york-sprint-rev",
+     26221,
+     26451
+    ],
+    [
+     "new-york-kom",
+     35689,
+     37061
+    ]
    ]
   },
   {
@@ -2196,6 +4181,13 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "new-york-sprint",
+     7291,
+     7442
+    ]
    ]
   },
   {
@@ -2212,6 +4204,18 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "central-park-loop-rev",
+     0,
+     9727
+    ],
+    [
+     "new-york-sprint-rev",
+     2057,
+     2276
+    ]
    ]
   },
   {
@@ -2227,6 +4231,13 @@
    "event_only": false,
    "sports": [
     "running"
+   ],
+   "segments": [
+    [
+     "new-york-kom-rev",
+     3412,
+     4551
+    ]
    ]
   },
   {
@@ -2243,6 +4254,18 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "the-peristyle-sprint",
+     2200,
+     2610
+    ],
+    [
+     "the-hill-kom",
+     4124,
+     4646
+    ]
    ]
   },
   {
@@ -2258,6 +4281,18 @@
    "event_only": false,
    "sports": [
     "running"
+   ],
+   "segments": [
+    [
+     "the-peristyle-sprint",
+     2200,
+     2610
+    ],
+    [
+     "the-hill-kom",
+     4124,
+     4646
+    ]
    ]
   },
   {
@@ -2274,6 +4309,23 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "new-york-kom",
+     8614,
+     9979
+    ],
+    [
+     "new-york-sprint-rev",
+     12372,
+     12600
+    ],
+    [
+     "new-york-kom-rev",
+     15869,
+     16995
+    ]
    ]
   },
   {
@@ -2289,7 +4341,8 @@
    "event_only": false,
    "sports": [
     "running"
-   ]
+   ],
+   "segments": []
   },
   {
    "id": 274775181,
@@ -2304,7 +4357,8 @@
    "event_only": true,
    "sports": [
     "running"
-   ]
+   ],
+   "segments": []
   },
   {
    "id": 3314406972,
@@ -2320,6 +4374,18 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "brooklyn-bridge-kom",
+     6591,
+     8594
+    ],
+    [
+     "manhattan-sprint",
+     11327,
+     11571
+    ]
    ]
   },
   {
@@ -2336,6 +4402,23 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "brooklyn-bridge-kom",
+     6592,
+     8594
+    ],
+    [
+     "manhattan-sprint",
+     11327,
+     11571
+    ],
+    [
+     "manhattan-sprint-rev",
+     23903,
+     24147
+    ]
    ]
   },
   {
@@ -2352,6 +4435,33 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "brooklyn-bridge-kom",
+     3115,
+     5117
+    ],
+    [
+     "manhattan-sprint",
+     7838,
+     8094
+    ],
+    [
+     "new-york-kom-rev",
+     17586,
+     18727
+    ],
+    [
+     "new-york-sprint-rev",
+     20939,
+     21169
+    ],
+    [
+     "new-york-kom",
+     23991,
+     25353
+    ]
    ]
   },
   {
@@ -2368,7 +4478,8 @@
    "sports": [
     "running",
     "cycling"
-   ]
+   ],
+   "segments": []
   },
   {
    "id": 274639515,
@@ -2384,7 +4495,8 @@
    "sports": [
     "running",
     "cycling"
-   ]
+   ],
+   "segments": []
   },
   {
    "id": 1552189318,
@@ -2400,6 +4512,18 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "brooklyn-bridge-kom",
+     8284,
+     10286
+    ],
+    [
+     "manhattan-sprint",
+     13008,
+     13263
+    ]
    ]
   },
   {
@@ -2416,6 +4540,33 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "center-sprint-rev",
+     1183,
+     1385
+    ],
+    [
+     "manhattan-sprint",
+     8628,
+     8872
+    ],
+    [
+     "brooklyn-bridge-kom",
+     11140,
+     13142
+    ],
+    [
+     "center-sprint-rev",
+     19508,
+     19698
+    ],
+    [
+     "manhattan-sprint-rev",
+     31010,
+     31253
+    ]
    ]
   },
   {
@@ -2432,6 +4583,13 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "new-york-kom",
+     9102,
+     10480
+    ]
    ]
   },
   {
@@ -2448,6 +4606,13 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "new-york-kom-rev",
+     9401,
+     10548
+    ]
    ]
   },
   {
@@ -2464,7 +4629,8 @@
    "sports": [
     "running",
     "cycling"
-   ]
+   ],
+   "segments": []
   },
   {
    "id": 2949228237,
@@ -2479,7 +4645,8 @@
    "event_only": false,
    "sports": [
     "running"
-   ]
+   ],
+   "segments": []
   },
   {
    "id": 4232620535,
@@ -2495,6 +4662,28 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "center-sprint",
+     1545,
+     1728
+    ],
+    [
+     "the-peristyle-sprint-rev",
+     2950,
+     3344
+    ],
+    [
+     "center-sprint",
+     4836,
+     5029
+    ],
+    [
+     "the-hill-kom",
+     5917,
+     6440
+    ]
    ]
   },
   {
@@ -2510,6 +4699,28 @@
    "event_only": false,
    "sports": [
     "running"
+   ],
+   "segments": [
+    [
+     "center-sprint",
+     1545,
+     1728
+    ],
+    [
+     "the-peristyle-sprint-rev",
+     2950,
+     3344
+    ],
+    [
+     "center-sprint",
+     4836,
+     5029
+    ],
+    [
+     "the-hill-kom",
+     5917,
+     6440
+    ]
    ]
   },
   {
@@ -2526,6 +4737,23 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "manhattan-sprint-rev",
+     8742,
+     8986
+    ],
+    [
+     "manhattan-sprint",
+     18870,
+     19114
+    ],
+    [
+     "new-york-sprint",
+     29354,
+     29503
+    ]
    ]
   },
   {
@@ -2542,6 +4770,18 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "champs-elysees",
+     0,
+     6617
+    ],
+    [
+     "lutece-sprint",
+     1173,
+     1327
+    ]
    ]
   },
   {
@@ -2557,6 +4797,18 @@
    "event_only": false,
    "sports": [
     "running"
+   ],
+   "segments": [
+    [
+     "champs-elysees",
+     0,
+     6631
+    ],
+    [
+     "lutece-sprint",
+     1173,
+     1323
+    ]
    ]
   },
   {
@@ -2573,6 +4825,13 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "lutece-sprint-rev",
+     19876,
+     20107
+    ]
    ]
   },
   {
@@ -2589,6 +4848,28 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "lutece-sprint",
+     1179,
+     1329
+    ],
+    [
+     "eglise-sprint",
+     7175,
+     7423
+    ],
+    [
+     "montmartre-kom",
+     9491,
+     10720
+    ],
+    [
+     "tchou-tchou-sprint",
+     13262,
+     13423
+    ]
    ]
   },
   {
@@ -2605,6 +4886,48 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "lutece-sprint",
+     1174,
+     1326
+    ],
+    [
+     "eglise-sprint",
+     5257,
+     5504
+    ],
+    [
+     "montmartre-kom",
+     7573,
+     8803
+    ],
+    [
+     "tchou-tchou-sprint",
+     11357,
+     11505
+    ],
+    [
+     "lutece-sprint",
+     15678,
+     15829
+    ],
+    [
+     "monceau-sprint",
+     17236,
+     17532
+    ],
+    [
+     "montmartre-kom",
+     19387,
+     20616
+    ],
+    [
+     "tchou-tchou-sprint",
+     23170,
+     23319
+    ]
    ]
   },
   {
@@ -2621,6 +4944,103 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "champs-elysees",
+     0,
+     6615
+    ],
+    [
+     "lutece-sprint",
+     1171,
+     1324
+    ],
+    [
+     "champs-elysees",
+     6615,
+     13253
+    ],
+    [
+     "lutece-sprint",
+     7808,
+     7947
+    ],
+    [
+     "champs-elysees",
+     13253,
+     19874
+    ],
+    [
+     "lutece-sprint",
+     14430,
+     14584
+    ],
+    [
+     "lutece-sprint",
+     21052,
+     21206
+    ],
+    [
+     "monceau-sprint",
+     22621,
+     22908
+    ],
+    [
+     "montmartre-kom",
+     24770,
+     25994
+    ],
+    [
+     "tchou-tchou-sprint",
+     28543,
+     28708
+    ],
+    [
+     "lutece-sprint",
+     37024,
+     37178
+    ],
+    [
+     "monceau-sprint",
+     38577,
+     38881
+    ],
+    [
+     "montmartre-kom",
+     40726,
+     41966
+    ],
+    [
+     "tchou-tchou-sprint",
+     44518,
+     44664
+    ],
+    [
+     "lutece-sprint",
+     52981,
+     53135
+    ],
+    [
+     "monceau-sprint",
+     54533,
+     54838
+    ],
+    [
+     "montmartre-kom",
+     56682,
+     57923
+    ],
+    [
+     "tchou-tchou-sprint",
+     60474,
+     60620
+    ],
+    [
+     "lutece-sprint",
+     68938,
+     69091
+    ]
    ]
   },
   {
@@ -2637,6 +5057,28 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "lutece-sprint",
+     1178,
+     1330
+    ],
+    [
+     "monceau-sprint",
+     2732,
+     3026
+    ],
+    [
+     "montmartre-kom",
+     4882,
+     6110
+    ],
+    [
+     "tchou-tchou-sprint",
+     8664,
+     8817
+    ]
    ]
   },
   {
@@ -2653,6 +5095,18 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "lutece-sprint",
+     1175,
+     1326
+    ],
+    [
+     "monceau-sprint",
+     3105,
+     3401
+    ]
    ]
   },
   {
@@ -2669,6 +5123,18 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "champs-elysees-rev",
+     0,
+     6595
+    ],
+    [
+     "lutece-sprint-rev",
+     5021,
+     5262
+    ]
    ]
   },
   {
@@ -2684,6 +5150,18 @@
    "event_only": false,
    "sports": [
     "running"
+   ],
+   "segments": [
+    [
+     "champs-elysees-rev",
+     0,
+     6585
+    ],
+    [
+     "lutece-sprint-rev",
+     5020,
+     5252
+    ]
    ]
   },
   {
@@ -2700,6 +5178,43 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "lutece-sprint",
+     1171,
+     1330
+    ],
+    [
+     "monceau-sprint",
+     2726,
+     3023
+    ],
+    [
+     "eglise-sprint",
+     6219,
+     6456
+    ],
+    [
+     "monceau-sprint",
+     10528,
+     10836
+    ],
+    [
+     "montmartre-kom",
+     12679,
+     13910
+    ],
+    [
+     "montmartre-kom",
+     15950,
+     17182
+    ],
+    [
+     "tchou-tchou-sprint",
+     19734,
+     19883
+    ]
    ]
   },
   {
@@ -2715,6 +5230,28 @@
    "event_only": false,
    "sports": [
     "running"
+   ],
+   "segments": [
+    [
+     "monceau-sprint",
+     1656,
+     1950
+    ],
+    [
+     "montmartre-kom",
+     3806,
+     5036
+    ],
+    [
+     "tchou-tchou-sprint",
+     7596,
+     7749
+    ],
+    [
+     "eglise-sprint",
+     10687,
+     10935
+    ]
    ]
   },
   {
@@ -2731,6 +5268,98 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "champs-elysees",
+     0,
+     6613
+    ],
+    [
+     "lutece-sprint",
+     1171,
+     1320
+    ],
+    [
+     "champs-elysees",
+     6613,
+     13243
+    ],
+    [
+     "lutece-sprint",
+     7801,
+     7950
+    ],
+    [
+     "champs-elysees",
+     13243,
+     19860
+    ],
+    [
+     "lutece-sprint",
+     14419,
+     14578
+    ],
+    [
+     "lutece-sprint",
+     21048,
+     21197
+    ],
+    [
+     "eglise-sprint",
+     27043,
+     27298
+    ],
+    [
+     "montmartre-kom",
+     29357,
+     30583
+    ],
+    [
+     "tchou-tchou-sprint",
+     33134,
+     33291
+    ],
+    [
+     "lutece-sprint",
+     37464,
+     37613
+    ],
+    [
+     "eglise-sprint",
+     43460,
+     43714
+    ],
+    [
+     "montmartre-kom",
+     45773,
+     46999
+    ],
+    [
+     "tchou-tchou-sprint",
+     49550,
+     49708
+    ],
+    [
+     "lutece-sprint",
+     53880,
+     54029
+    ],
+    [
+     "eglise-sprint",
+     59876,
+     60117
+    ],
+    [
+     "montmartre-kom",
+     62190,
+     63415
+    ],
+    [
+     "tchou-tchou-sprint",
+     65966,
+     66124
+    ]
    ]
   },
   {
@@ -2746,6 +5375,18 @@
    "event_only": false,
    "sports": [
     "running"
+   ],
+   "segments": [
+    [
+     "eglise-sprint",
+     1350,
+     1597
+    ],
+    [
+     "lutece-sprint-rev",
+     4650,
+     4886
+    ]
    ]
   },
   {
@@ -2762,6 +5403,18 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "richmond-kom",
+     4915,
+     5542
+    ],
+    [
+     "23rd-st",
+     6450,
+     6722
+    ]
    ]
   },
   {
@@ -2778,6 +5431,18 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "23rd-st-rev",
+     1300,
+     2403
+    ],
+    [
+     "richmond-kom-rev",
+     2867,
+     3532
+    ]
    ]
   },
   {
@@ -2793,6 +5458,18 @@
    "event_only": false,
    "sports": [
     "running"
+   ],
+   "segments": [
+    [
+     "richmond-kom",
+     4948,
+     5562
+    ],
+    [
+     "23rd-st",
+     6476,
+     6745
+    ]
    ]
   },
   {
@@ -2809,6 +5486,38 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "23rd-st-rev",
+     795,
+     1902
+    ],
+    [
+     "richmond-kom-rev",
+     2369,
+     3034
+    ],
+    [
+     "richmond-sprint",
+     11500,
+     11704
+    ],
+    [
+     "broad-st",
+     14917,
+     15177
+    ],
+    [
+     "richmond-kom",
+     19752,
+     20380
+    ],
+    [
+     "23rd-st",
+     21274,
+     21555
+    ]
    ]
   },
   {
@@ -2825,6 +5534,43 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "richmond-sprint",
+     3730,
+     3942
+    ],
+    [
+     "richmond-sprint",
+     8794,
+     9006
+    ],
+    [
+     "richmond-sprint",
+     13858,
+     14070
+    ],
+    [
+     "richmond-sprint",
+     18921,
+     19134
+    ],
+    [
+     "richmond-sprint",
+     24003,
+     24216
+    ],
+    [
+     "broad-st",
+     27414,
+     27678
+    ],
+    [
+     "richmond-kom",
+     32258,
+     32882
+    ]
    ]
   },
   {
@@ -2841,6 +5587,18 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "23rd-st-rev",
+     1303,
+     2396
+    ],
+    [
+     "richmond-kom-rev",
+     2873,
+     3528
+    ]
    ]
   },
   {
@@ -2857,6 +5615,58 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "23rd-st-rev",
+     951,
+     2058
+    ],
+    [
+     "richmond-kom-rev",
+     2529,
+     3190
+    ],
+    [
+     "23rd-st-rev",
+     10091,
+     11198
+    ],
+    [
+     "richmond-kom-rev",
+     11654,
+     12331
+    ],
+    [
+     "23rd-st-rev",
+     19232,
+     20337
+    ],
+    [
+     "richmond-kom-rev",
+     20795,
+     21458
+    ],
+    [
+     "richmond-sprint",
+     29912,
+     30127
+    ],
+    [
+     "broad-st",
+     33329,
+     33593
+    ],
+    [
+     "richmond-kom",
+     38173,
+     38792
+    ],
+    [
+     "23rd-st",
+     39686,
+     39970
+    ]
    ]
   },
   {
@@ -2873,7 +5683,8 @@
    "sports": [
     "running",
     "cycling"
-   ]
+   ],
+   "segments": []
   },
   {
    "id": 2196019512,
@@ -2889,6 +5700,33 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "richmond-uci-course",
+     0,
+     16215
+    ],
+    [
+     "richmond-sprint",
+     3697,
+     3903
+    ],
+    [
+     "broad-st",
+     7111,
+     7377
+    ],
+    [
+     "richmond-kom",
+     11956,
+     12579
+    ],
+    [
+     "23rd-st",
+     13484,
+     13754
+    ]
    ]
   },
   {
@@ -2905,6 +5743,13 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "richmond-sprint",
+     4817,
+     5027
+    ]
    ]
   },
   {
@@ -2921,6 +5766,13 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "sgurr-summit-south",
+     19797,
+     20793
+    ]
    ]
   },
   {
@@ -2937,6 +5789,18 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "sgurr-summit-south",
+     1445,
+     2432
+    ],
+    [
+     "sgurr-summit-north",
+     4320,
+     5890
+    ]
    ]
   },
   {
@@ -2953,6 +5817,13 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "sgurr-summit-south",
+     11376,
+     12372
+    ]
    ]
   },
   {
@@ -2969,7 +5840,8 @@
    "sports": [
     "running",
     "cycling"
-   ]
+   ],
+   "segments": []
   },
   {
    "id": 3351665212,
@@ -2984,7 +5856,8 @@
    "event_only": false,
    "sports": [
     "running"
-   ]
+   ],
+   "segments": []
   },
   {
    "id": 79243399,
@@ -3000,7 +5873,8 @@
    "sports": [
     "running",
     "cycling"
-   ]
+   ],
+   "segments": []
   },
   {
    "id": 1258415487,
@@ -3016,7 +5890,8 @@
    "sports": [
     "running",
     "cycling"
-   ]
+   ],
+   "segments": []
   },
   {
    "id": 2773927650,
@@ -3031,7 +5906,8 @@
    "event_only": false,
    "sports": [
     "running"
-   ]
+   ],
+   "segments": []
   },
   {
    "id": 742057576,
@@ -3047,7 +5923,8 @@
    "sports": [
     "running",
     "cycling"
-   ]
+   ],
+   "segments": []
   },
   {
    "id": 1384155764,
@@ -3062,7 +5939,8 @@
    "event_only": false,
    "sports": [
     "running"
-   ]
+   ],
+   "segments": []
   },
   {
    "id": 2826340040,
@@ -3078,7 +5956,8 @@
    "sports": [
     "running",
     "cycling"
-   ]
+   ],
+   "segments": []
   },
   {
    "id": 46799750,
@@ -3094,7 +5973,8 @@
    "sports": [
     "running",
     "cycling"
-   ]
+   ],
+   "segments": []
   },
   {
    "id": 4227232797,
@@ -3110,6 +5990,13 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "sgurr-summit-north",
+     11988,
+     13570
+    ]
    ]
   },
   {
@@ -3126,7 +6013,8 @@
    "sports": [
     "running",
     "cycling"
-   ]
+   ],
+   "segments": []
   },
   {
    "id": 3486338362,
@@ -3142,7 +6030,8 @@
    "sports": [
     "running",
     "cycling"
-   ]
+   ],
+   "segments": []
   },
   {
    "id": 3662705581,
@@ -3158,6 +6047,18 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "sgurr-summit-north",
+     8239,
+     9808
+    ],
+    [
+     "sgurr-summit-south",
+     17839,
+     18830
+    ]
    ]
   },
   {
@@ -3173,7 +6074,8 @@
    "event_only": false,
    "sports": [
     "running"
-   ]
+   ],
+   "segments": []
   },
   {
    "id": 3819095753,
@@ -3188,7 +6090,8 @@
    "event_only": false,
    "sports": [
     "running"
-   ]
+   ],
+   "segments": []
   },
   {
    "id": 1115260805,
@@ -3204,6 +6107,13 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "alpe-du-zwift",
+     28873,
+     41101
+    ]
    ]
   },
   {
@@ -3220,6 +6130,13 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "watopia-sprint",
+     5608,
+     5938
+    ]
    ]
   },
   {
@@ -3235,6 +6152,13 @@
    "event_only": false,
    "sports": [
     "running"
+   ],
+   "segments": [
+    [
+     "watopia-sprint",
+     5608,
+     5938
+    ]
    ]
   },
   {
@@ -3251,6 +6175,13 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "fuego-flats",
+     28719,
+     29217
+    ]
    ]
   },
   {
@@ -3267,6 +6198,38 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "titans-grove-kom",
+     10250,
+     12858
+    ],
+    [
+     "zwift-kom",
+     19324,
+     20219
+    ],
+    [
+     "volcano-kom",
+     29108,
+     32827
+    ],
+    [
+     "titans-grove-kom-rev",
+     47131,
+     48030
+    ],
+    [
+     "zwift-kom-rev",
+     59232,
+     61689
+    ],
+    [
+     "fuego-flats",
+     66931,
+     67443
+    ]
    ]
   },
   {
@@ -3283,6 +6246,13 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "epic-kom",
+     4408,
+     13808
+    ]
    ]
   },
   {
@@ -3299,7 +6269,8 @@
    "sports": [
     "running",
     "cycling"
-   ]
+   ],
+   "segments": []
   },
   {
    "id": 2139708890,
@@ -3315,6 +6286,18 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "fuego-flats",
+     4527,
+     5020
+    ],
+    [
+     "epic-kom",
+     15059,
+     24462
+    ]
    ]
   },
   {
@@ -3331,7 +6314,8 @@
    "sports": [
     "running",
     "cycling"
-   ]
+   ],
+   "segments": []
   },
   {
    "id": 1373909093,
@@ -3346,7 +6330,8 @@
    "event_only": false,
    "sports": [
     "running"
-   ]
+   ],
+   "segments": []
   },
   {
    "id": 3694952104,
@@ -3361,7 +6346,8 @@
    "event_only": true,
    "sports": [
     "running"
-   ]
+   ],
+   "segments": []
   },
   {
    "id": 1464561389,
@@ -3377,6 +6363,18 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "jungle-loop",
+     7952,
+     15774
+    ],
+    [
+     "jungle-loop",
+     15798,
+     23630
+    ]
    ]
   },
   {
@@ -3393,7 +6391,8 @@
    "sports": [
     "running",
     "cycling"
-   ]
+   ],
+   "segments": []
   },
   {
    "id": 3023359358,
@@ -3409,6 +6408,18 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "titans-grove-kom-rev",
+     11711,
+     12610
+    ],
+    [
+     "epic-kom-rev",
+     21516,
+     27681
+    ]
    ]
   },
   {
@@ -3425,6 +6436,13 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "woodland-sprint",
+     12560,
+     13050
+    ]
    ]
   },
   {
@@ -3441,6 +6459,28 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "woodland-sprint",
+     4297,
+     4800
+    ],
+    [
+     "jarvis-lap",
+     19285,
+     24146
+    ],
+    [
+     "jarvis-kom",
+     19948,
+     21760
+    ],
+    [
+     "jarvis-sprint",
+     23098,
+     23299
+    ]
    ]
   },
   {
@@ -3457,6 +6497,18 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "itza-kom",
+     594,
+     4334
+    ],
+    [
+     "mayan-mountainside-kom",
+     13020,
+     15021
+    ]
    ]
   },
   {
@@ -3473,6 +6525,18 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "titans-grove-kom-rev",
+     12943,
+     13854
+    ],
+    [
+     "titans-grove-kom",
+     22721,
+     25330
+    ]
    ]
   },
   {
@@ -3489,6 +6553,153 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "jarvis-kom-rev",
+     232,
+     1528
+    ],
+    [
+     "jarvis-lap-rev",
+     3973,
+     8789
+    ],
+    [
+     "jarvis-sprint-rev",
+     4603,
+     4801
+    ],
+    [
+     "jarvis-kom-rev",
+     5050,
+     6344
+    ],
+    [
+     "jarvis-lap-rev",
+     8789,
+     13604
+    ],
+    [
+     "jarvis-sprint-rev",
+     9419,
+     9617
+    ],
+    [
+     "jarvis-kom-rev",
+     9866,
+     11160
+    ],
+    [
+     "jarvis-lap-rev",
+     13604,
+     18434
+    ],
+    [
+     "jarvis-sprint-rev",
+     14248,
+     14445
+    ],
+    [
+     "jarvis-kom-rev",
+     14681,
+     15976
+    ],
+    [
+     "jarvis-lap-rev",
+     18434,
+     23249
+    ],
+    [
+     "jarvis-sprint-rev",
+     19063,
+     19261
+    ],
+    [
+     "jarvis-kom-rev",
+     19497,
+     20792
+    ],
+    [
+     "jarvis-lap-rev",
+     23249,
+     28064
+    ],
+    [
+     "jarvis-sprint-rev",
+     23879,
+     24076
+    ],
+    [
+     "jarvis-kom-rev",
+     24312,
+     25608
+    ],
+    [
+     "jarvis-lap-rev",
+     28064,
+     32880
+    ],
+    [
+     "jarvis-sprint-rev",
+     28694,
+     28892
+    ],
+    [
+     "jarvis-kom-rev",
+     29141,
+     30435
+    ],
+    [
+     "jarvis-lap-rev",
+     32880,
+     37695
+    ],
+    [
+     "jarvis-sprint-rev",
+     33510,
+     33707
+    ],
+    [
+     "jarvis-kom-rev",
+     33956,
+     35250
+    ],
+    [
+     "jarvis-lap-rev",
+     37695,
+     42525
+    ],
+    [
+     "jarvis-sprint-rev",
+     38332,
+     38528
+    ],
+    [
+     "jarvis-kom-rev",
+     38767,
+     40065
+    ],
+    [
+     "jarvis-lap-rev",
+     42525,
+     47350
+    ],
+    [
+     "jarvis-sprint-rev",
+     43155,
+     43354
+    ],
+    [
+     "jarvis-kom-rev",
+     43599,
+     44893
+    ],
+    [
+     "jarvis-sprint-rev",
+     47982,
+     48175
+    ]
    ]
   },
   {
@@ -3505,6 +6716,18 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "volcano-kom",
+     6576,
+     10295
+    ],
+    [
+     "zwift-kom",
+     18528,
+     19429
+    ]
    ]
   },
   {
@@ -3521,6 +6744,23 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "titans-grove-kom-rev",
+     5776,
+     6693
+    ],
+    [
+     "zwift-kom",
+     16349,
+     17241
+    ],
+    [
+     "watopia-sprint",
+     21567,
+     21892
+    ]
    ]
   },
   {
@@ -3537,6 +6777,23 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "titans-grove-kom-rev",
+     3759,
+     4676
+    ],
+    [
+     "titans-grove-kom-rev",
+     38316,
+     39209
+    ],
+    [
+     "fuego-flats-rev",
+     45014,
+     52121
+    ]
    ]
   },
   {
@@ -3553,6 +6810,28 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "titans-grove-kom",
+     10257,
+     12863
+    ],
+    [
+     "fuego-flats-rev",
+     24367,
+     31439
+    ],
+    [
+     "titans-grove-kom-rev",
+     37831,
+     38729
+    ],
+    [
+     "fuego-flats",
+     51171,
+     51673
+    ]
    ]
   },
   {
@@ -3569,6 +6848,13 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "the-grade-kom",
+     2839,
+     6360
+    ]
    ]
   },
   {
@@ -3584,6 +6870,13 @@
    "event_only": false,
    "sports": [
     "running"
+   ],
+   "segments": [
+    [
+     "radio-tower-kom",
+     3165,
+     4251
+    ]
    ]
   },
   {
@@ -3600,6 +6893,23 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "fuego-flats",
+     3645,
+     4138
+    ],
+    [
+     "fuego-flats-rev",
+     12358,
+     19432
+    ],
+    [
+     "fuego-flats",
+     20921,
+     21416
+    ]
    ]
   },
   {
@@ -3616,7 +6926,8 @@
    "sports": [
     "running",
     "cycling"
-   ]
+   ],
+   "segments": []
   },
   {
    "id": 3261621461,
@@ -3631,6 +6942,13 @@
    "event_only": false,
    "sports": [
     "running"
+   ],
+   "segments": [
+    [
+     "watopia-sprint",
+     7244,
+     7588
+    ]
    ]
   },
   {
@@ -3647,6 +6965,38 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "zwift-kom",
+     932,
+     1833
+    ],
+    [
+     "volcano-kom",
+     8401,
+     12110
+    ],
+    [
+     "epic-kom",
+     23810,
+     33227
+    ],
+    [
+     "radio-tower-kom",
+     33651,
+     34740
+    ],
+    [
+     "alpe-du-zwift",
+     46958,
+     59187
+    ],
+    [
+     "watopia-sprint",
+     86053,
+     86382
+    ]
    ]
   },
   {
@@ -3663,6 +7013,18 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "itza-kom",
+     596,
+     4350
+    ],
+    [
+     "mayan-mountainside-kom",
+     23310,
+     25307
+    ]
    ]
   },
   {
@@ -3679,7 +7041,8 @@
    "sports": [
     "running",
     "cycling"
-   ]
+   ],
+   "segments": []
   },
   {
    "id": 3314187922,
@@ -3694,7 +7057,8 @@
    "event_only": false,
    "sports": [
     "running"
-   ]
+   ],
+   "segments": []
   },
   {
    "id": 1993374659,
@@ -3710,7 +7074,8 @@
    "sports": [
     "running",
     "cycling"
-   ]
+   ],
+   "segments": []
   },
   {
    "id": 2708527018,
@@ -3725,7 +7090,8 @@
    "event_only": true,
    "sports": [
     "running"
-   ]
+   ],
+   "segments": []
   },
   {
    "id": 2031173606,
@@ -3740,6 +7106,13 @@
    "event_only": false,
    "sports": [
     "running"
+   ],
+   "segments": [
+    [
+     "the-grade-kom",
+     3261,
+     6781
+    ]
    ]
   },
   {
@@ -3756,6 +7129,18 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "hilly-loop-rev",
+     0,
+     9107
+    ],
+    [
+     "zwift-kom-rev",
+     4789,
+     7250
+    ]
    ]
   },
   {
@@ -3771,6 +7156,18 @@
    "event_only": false,
    "sports": [
     "running"
+   ],
+   "segments": [
+    [
+     "hilly-loop-rev",
+     0,
+     9181
+    ],
+    [
+     "zwift-kom-rev",
+     4824,
+     7296
+    ]
    ]
   },
   {
@@ -3787,6 +7184,33 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "volcano-circuit",
+     2557,
+     6633
+    ],
+    [
+     "volcano-circuit",
+     6644,
+     10719
+    ],
+    [
+     "volcano-circuit",
+     10730,
+     14817
+    ],
+    [
+     "volcano-circuit",
+     14839,
+     18904
+    ],
+    [
+     "jarvis-kom",
+     21398,
+     23206
+    ]
    ]
   },
   {
@@ -3802,6 +7226,13 @@
    "event_only": true,
    "sports": [
     "running"
+   ],
+   "segments": [
+    [
+     "watopia-sprint",
+     1558,
+     1884
+    ]
    ]
   },
   {
@@ -3818,6 +7249,18 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "mayan-mountainside-kom",
+     23781,
+     25770
+    ],
+    [
+     "itza-kom",
+     26358,
+     30132
+    ]
    ]
   },
   {
@@ -3834,6 +7277,28 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "zwift-kom",
+     831,
+     1731
+    ],
+    [
+     "titans-grove-kom-rev",
+     15130,
+     16033
+    ],
+    [
+     "mayan-mountainside-kom",
+     39743,
+     41731
+    ],
+    [
+     "itza-kom",
+     42339,
+     46098
+    ]
    ]
   },
   {
@@ -3850,6 +7315,18 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "jarvis-sprint-rev",
+     2996,
+     3202
+    ],
+    [
+     "jarvis-kom-rev",
+     3443,
+     4730
+    ]
    ]
   },
   {
@@ -3865,7 +7342,8 @@
    "event_only": false,
    "sports": [
     "running"
-   ]
+   ],
+   "segments": []
   },
   {
    "id": 743730361,
@@ -3881,6 +7359,13 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "jungle-loop-rev",
+     0,
+     7858
+    ]
    ]
   },
   {
@@ -3897,6 +7382,13 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "jungle-loop",
+     0,
+     7817
+    ]
    ]
   },
   {
@@ -3912,6 +7404,13 @@
    "event_only": false,
    "sports": [
     "running"
+   ],
+   "segments": [
+    [
+     "jungle-loop",
+     0,
+     7817
+    ]
    ]
   },
   {
@@ -3927,6 +7426,13 @@
    "event_only": false,
    "sports": [
     "running"
+   ],
+   "segments": [
+    [
+     "jungle-loop-rev",
+     0,
+     7858
+    ]
    ]
   },
   {
@@ -3943,6 +7449,13 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "titans-grove-kom-rev",
+     4180,
+     5105
+    ]
    ]
   },
   {
@@ -3959,6 +7472,23 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "titans-grove-kom-rev",
+     3576,
+     4469
+    ],
+    [
+     "watopia-sprint",
+     15888,
+     16216
+    ],
+    [
+     "volcano-kom",
+     20263,
+     23973
+    ]
    ]
   },
   {
@@ -3975,6 +7505,13 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "zwift-kom",
+     8099,
+     8990
+    ]
    ]
   },
   {
@@ -3990,6 +7527,13 @@
    "event_only": false,
    "sports": [
     "running"
+   ],
+   "segments": [
+    [
+     "zwift-kom",
+     8099,
+     8990
+    ]
    ]
   },
   {
@@ -4006,6 +7550,23 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "jarvis-kom",
+     653,
+     2459
+    ],
+    [
+     "jarvis-sprint",
+     3793,
+     3996
+    ],
+    [
+     "volcano-kom",
+     5207,
+     8945
+    ]
    ]
   },
   {
@@ -4021,7 +7582,8 @@
    "event_only": false,
    "sports": [
     "running"
-   ]
+   ],
+   "segments": []
   },
   {
    "id": 4084028627,
@@ -4037,6 +7599,18 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "mayan-mountainside-kom",
+     11527,
+     13522
+    ],
+    [
+     "itza-kom",
+     14123,
+     17883
+    ]
    ]
   },
   {
@@ -4052,7 +7626,8 @@
    "event_only": false,
    "sports": [
     "running"
-   ]
+   ],
+   "segments": []
   },
   {
    "id": 4280627426,
@@ -4068,6 +7643,18 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "mayan-mountainside-kom",
+     3532,
+     5520
+    ],
+    [
+     "itza-kom",
+     6126,
+     9869
+    ]
    ]
   },
   {
@@ -4084,6 +7671,18 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "mayan-mountainside-kom",
+     9855,
+     11857
+    ],
+    [
+     "itza-kom",
+     12453,
+     16212
+    ]
    ]
   },
   {
@@ -4100,7 +7699,8 @@
    "sports": [
     "running",
     "cycling"
-   ]
+   ],
+   "segments": []
   },
   {
    "id": 136182452,
@@ -4115,7 +7715,8 @@
    "event_only": false,
    "sports": [
     "running"
-   ]
+   ],
+   "segments": []
   },
   {
    "id": 2139465450,
@@ -4131,6 +7732,23 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "epic-kom",
+     6059,
+     15477
+    ],
+    [
+     "radio-tower-kom",
+     15903,
+     16991
+    ],
+    [
+     "titans-grove-kom-rev",
+     32968,
+     33891
+    ]
    ]
   },
   {
@@ -4147,6 +7765,28 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "mayan-mountainside-kom",
+     25736,
+     27736
+    ],
+    [
+     "itza-kom",
+     28333,
+     32088
+    ],
+    [
+     "woodland-sprint",
+     41147,
+     41648
+    ],
+    [
+     "fuego-flats",
+     63486,
+     63981
+    ]
    ]
   },
   {
@@ -4163,7 +7803,8 @@
    "sports": [
     "running",
     "cycling"
-   ]
+   ],
+   "segments": []
   },
   {
    "id": 3532866973,
@@ -4179,6 +7820,13 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "the-grade-kom",
+     0,
+     3517
+    ]
    ]
   },
   {
@@ -4194,6 +7842,13 @@
    "event_only": false,
    "sports": [
     "running"
+   ],
+   "segments": [
+    [
+     "the-grade-kom",
+     0,
+     3517
+    ]
    ]
   },
   {
@@ -4210,6 +7865,28 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "watopia-sprint",
+     15339,
+     15674
+    ],
+    [
+     "volcano-kom",
+     19761,
+     23455
+    ],
+    [
+     "zwift-kom-rev",
+     31648,
+     34115
+    ],
+    [
+     "fuego-flats",
+     39365,
+     39863
+    ]
    ]
   },
   {
@@ -4226,6 +7903,18 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "titans-grove-kom-rev",
+     4927,
+     5842
+    ],
+    [
+     "the-grade-kom",
+     23143,
+     26666
+    ]
    ]
   },
   {
@@ -4242,6 +7931,53 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "jarvis-sprint-rev",
+     8716,
+     8916
+    ],
+    [
+     "jarvis-kom-rev",
+     9155,
+     10444
+    ],
+    [
+     "jarvis-lap-rev",
+     12898,
+     17715
+    ],
+    [
+     "jarvis-sprint-rev",
+     13535,
+     13721
+    ],
+    [
+     "jarvis-kom-rev",
+     13973,
+     15261
+    ],
+    [
+     "jarvis-lap-rev",
+     17715,
+     22519
+    ],
+    [
+     "jarvis-sprint-rev",
+     18339,
+     18539
+    ],
+    [
+     "jarvis-kom-rev",
+     18777,
+     20078
+    ],
+    [
+     "jarvis-sprint-rev",
+     23159,
+     23361
+    ]
    ]
   },
   {
@@ -4258,7 +7994,8 @@
    "sports": [
     "running",
     "cycling"
-   ]
+   ],
+   "segments": []
   },
   {
    "id": 2064290391,
@@ -4274,6 +8011,28 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "epic-kom-rev",
+     3846,
+     10048
+    ],
+    [
+     "the-grade-kom",
+     17089,
+     20621
+    ],
+    [
+     "epic-kom",
+     33375,
+     42792
+    ],
+    [
+     "radio-tower-kom",
+     43223,
+     44313
+    ]
    ]
   },
   {
@@ -4290,6 +8049,23 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "titans-grove-kom-rev",
+     3637,
+     4539
+    ],
+    [
+     "epic-kom",
+     10642,
+     20048
+    ],
+    [
+     "alpe-du-zwift",
+     33698,
+     45916
+    ]
    ]
   },
   {
@@ -4306,6 +8082,28 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "mayan-mountainside-kom",
+     3528,
+     5531
+    ],
+    [
+     "itza-kom",
+     6125,
+     9881
+    ],
+    [
+     "the-grade-kom",
+     12143,
+     15680
+    ],
+    [
+     "radio-tower-kom",
+     19241,
+     20332
+    ]
    ]
   },
   {
@@ -4322,7 +8120,8 @@
    "sports": [
     "running",
     "cycling"
-   ]
+   ],
+   "segments": []
   },
   {
    "id": 3701568815,
@@ -4338,7 +8137,8 @@
    "sports": [
     "running",
     "cycling"
-   ]
+   ],
+   "segments": []
   },
   {
    "id": 2967612381,
@@ -4354,7 +8154,8 @@
    "sports": [
     "running",
     "cycling"
-   ]
+   ],
+   "segments": []
   },
   {
    "id": 2663908549,
@@ -4370,6 +8171,13 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "alpe-du-zwift",
+     5033,
+     17265
+    ]
    ]
   },
   {
@@ -4385,6 +8193,13 @@
    "event_only": false,
    "sports": [
     "running"
+   ],
+   "segments": [
+    [
+     "alpe-du-zwift",
+     5033,
+     17265
+    ]
    ]
   },
   {
@@ -4400,7 +8215,8 @@
    "event_only": true,
    "sports": [
     "running"
-   ]
+   ],
+   "segments": []
   },
   {
    "id": 604330868,
@@ -4416,6 +8232,18 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "titans-grove-kom",
+     10251,
+     12859
+    ],
+    [
+     "fuego-flats",
+     19635,
+     20133
+    ]
    ]
   },
   {
@@ -4432,7 +8260,8 @@
    "sports": [
     "running",
     "cycling"
-   ]
+   ],
+   "segments": []
   },
   {
    "id": 3419787979,
@@ -4447,7 +8276,8 @@
    "event_only": false,
    "sports": [
     "running"
-   ]
+   ],
+   "segments": []
   },
   {
    "id": 2829629527,
@@ -4463,7 +8293,8 @@
    "sports": [
     "running",
     "cycling"
-   ]
+   ],
+   "segments": []
   },
   {
    "id": 2328501978,
@@ -4479,6 +8310,23 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "woodland-sprint",
+     16532,
+     17035
+    ],
+    [
+     "epic-kom",
+     23904,
+     33330
+    ],
+    [
+     "radio-tower-kom",
+     33741,
+     34836
+    ]
    ]
   },
   {
@@ -4495,6 +8343,18 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "mayan-mountainside-kom",
+     21744,
+     23728
+    ],
+    [
+     "itza-kom",
+     24321,
+     28077
+    ]
    ]
   },
   {
@@ -4511,6 +8371,13 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "woodland-sprint",
+     6951,
+     7458
+    ]
    ]
   },
   {
@@ -4527,6 +8394,23 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "fuego-flats-rev",
+     13355,
+     20434
+    ],
+    [
+     "watopia-sprint",
+     43400,
+     43729
+    ],
+    [
+     "volcano-kom",
+     51908,
+     55612
+    ]
    ]
   },
   {
@@ -4543,6 +8427,38 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "jarvis-lap",
+     10174,
+     15021
+    ],
+    [
+     "jarvis-kom",
+     10838,
+     12644
+    ],
+    [
+     "jarvis-sprint",
+     13984,
+     14181
+    ],
+    [
+     "jarvis-kom",
+     15685,
+     17479
+    ],
+    [
+     "jarvis-sprint",
+     18817,
+     19019
+    ],
+    [
+     "volcano-kom",
+     20228,
+     23956
+    ]
    ]
   },
   {
@@ -4558,7 +8474,8 @@
    "event_only": false,
    "sports": [
     "running"
-   ]
+   ],
+   "segments": []
   },
   {
    "id": 240388043,
@@ -4574,6 +8491,13 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "woodland-sprint",
+     15144,
+     15648
+    ]
    ]
   },
   {
@@ -4589,7 +8513,8 @@
    "event_only": false,
    "sports": [
     "running"
-   ]
+   ],
+   "segments": []
   },
   {
    "id": 2062126722,
@@ -4605,6 +8530,18 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "watopia-sprint",
+     13564,
+     13889
+    ],
+    [
+     "titans-grove-kom-rev",
+     30619,
+     31531
+    ]
    ]
   },
   {
@@ -4621,7 +8558,8 @@
    "sports": [
     "running",
     "cycling"
-   ]
+   ],
+   "segments": []
   },
   {
    "id": 1434769940,
@@ -4636,7 +8574,8 @@
    "event_only": false,
    "sports": [
     "running"
-   ]
+   ],
+   "segments": []
   },
   {
    "id": 2128890027,
@@ -4652,6 +8591,13 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "fuego-flats-rev",
+     8187,
+     15274
+    ]
    ]
   },
   {
@@ -4667,7 +8613,8 @@
    "event_only": false,
    "sports": [
     "running"
-   ]
+   ],
+   "segments": []
   },
   {
    "id": 1586193601,
@@ -4682,7 +8629,8 @@
    "event_only": true,
    "sports": [
     "running"
-   ]
+   ],
+   "segments": []
   },
   {
    "id": 1656629976,
@@ -4698,6 +8646,13 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "fuego-flats",
+     48383,
+     48887
+    ]
    ]
   },
   {
@@ -4714,6 +8669,23 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "jarvis-lap",
+     0,
+     4846
+    ],
+    [
+     "jarvis-kom",
+     655,
+     2461
+    ],
+    [
+     "jarvis-sprint",
+     3804,
+     4002
+    ]
    ]
   },
   {
@@ -4729,6 +8701,23 @@
    "event_only": false,
    "sports": [
     "running"
+   ],
+   "segments": [
+    [
+     "jarvis-lap",
+     0,
+     4846
+    ],
+    [
+     "jarvis-kom",
+     655,
+     2461
+    ],
+    [
+     "jarvis-sprint",
+     3804,
+     4002
+    ]
    ]
   },
   {
@@ -4745,6 +8734,18 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "zwift-kom-rev",
+     6887,
+     9350
+    ],
+    [
+     "fuego-flats",
+     14609,
+     15098
+    ]
    ]
   },
   {
@@ -4761,6 +8762,33 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "zwift-kom",
+     38185,
+     39087
+    ],
+    [
+     "volcano-kom",
+     47974,
+     51680
+    ],
+    [
+     "watopia-sprint",
+     58595,
+     58929
+    ],
+    [
+     "epic-kom",
+     65996,
+     75402
+    ],
+    [
+     "zwift-kom-rev",
+     98714,
+     101191
+    ]
    ]
   },
   {
@@ -4777,6 +8805,43 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "epic-kom",
+     4065,
+     13468
+    ],
+    [
+     "radio-tower-kom",
+     13905,
+     14995
+    ],
+    [
+     "volcano-kom",
+     42031,
+     45741
+    ],
+    [
+     "fuego-flats-rev",
+     62560,
+     69646
+    ],
+    [
+     "zwift-kom-rev",
+     79736,
+     82202
+    ],
+    [
+     "fuego-flats",
+     87460,
+     87954
+    ],
+    [
+     "alpe-du-zwift",
+     115720,
+     127944
+    ]
    ]
   },
   {
@@ -4793,6 +8858,23 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "zwift-kom",
+     935,
+     1839
+    ],
+    [
+     "titans-grove-kom",
+     12978,
+     15565
+    ],
+    [
+     "volcano-kom",
+     25460,
+     29172
+    ]
    ]
   },
   {
@@ -4809,6 +8891,28 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "zwift-kom",
+     935,
+     1823
+    ],
+    [
+     "epic-kom",
+     10092,
+     19521
+    ],
+    [
+     "radio-tower-kom",
+     19942,
+     21042
+    ],
+    [
+     "volcano-kom",
+     36781,
+     40503
+    ]
    ]
   },
   {
@@ -4825,6 +8929,23 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "volcano-kom",
+     3166,
+     6876
+    ],
+    [
+     "radio-tower-kom",
+     25304,
+     26403
+    ],
+    [
+     "zwift-kom-rev",
+     43414,
+     45895
+    ]
    ]
   },
   {
@@ -4841,6 +8962,23 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "jarvis-sprint-rev",
+     3820,
+     4010
+    ],
+    [
+     "jarvis-kom-rev",
+     4262,
+     5553
+    ],
+    [
+     "the-grade-kom",
+     34254,
+     37771
+    ]
    ]
   },
   {
@@ -4857,6 +8995,13 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "fuego-flats",
+     16385,
+     16879
+    ]
    ]
   },
   {
@@ -4873,6 +9018,13 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "woodland-sprint",
+     4293,
+     4791
+    ]
    ]
   },
   {
@@ -4888,6 +9040,13 @@
    "event_only": false,
    "sports": [
     "running"
+   ],
+   "segments": [
+    [
+     "titans-grove-kom-rev",
+     3503,
+     4414
+    ]
    ]
   },
   {
@@ -4904,6 +9063,13 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "alpe-du-zwift",
+     12860,
+     25072
+    ]
    ]
   },
   {
@@ -4919,7 +9085,8 @@
    "event_only": false,
    "sports": [
     "running"
-   ]
+   ],
+   "segments": []
   },
   {
    "id": 3453194200,
@@ -4935,6 +9102,13 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "fuego-flats",
+     33431,
+     33923
+    ]
    ]
   },
   {
@@ -4951,6 +9125,23 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "jarvis-kom-rev",
+     227,
+     1528
+    ],
+    [
+     "zwift-kom-rev",
+     11018,
+     13476
+    ],
+    [
+     "jarvis-sprint-rev",
+     19641,
+     19840
+    ]
    ]
   },
   {
@@ -4967,7 +9158,8 @@
    "sports": [
     "running",
     "cycling"
-   ]
+   ],
+   "segments": []
   },
   {
    "id": 482200332,
@@ -4982,7 +9174,8 @@
    "event_only": false,
    "sports": [
     "running"
-   ]
+   ],
+   "segments": []
   },
   {
    "id": 686828068,
@@ -4998,6 +9191,13 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "volcano-circuit",
+     0,
+     4067
+    ]
    ]
   },
   {
@@ -5014,6 +9214,13 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "volcano-circuit-rev",
+     0,
+     4094
+    ]
    ]
   },
   {
@@ -5029,6 +9236,13 @@
    "event_only": false,
    "sports": [
     "running"
+   ],
+   "segments": [
+    [
+     "volcano-circuit-rev",
+     0,
+     4094
+    ]
    ]
   },
   {
@@ -5044,6 +9258,13 @@
    "event_only": false,
    "sports": [
     "running"
+   ],
+   "segments": [
+    [
+     "volcano-circuit",
+     0,
+     4067
+    ]
    ]
   },
   {
@@ -5060,6 +9281,13 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "volcano-kom",
+     11780,
+     15496
+    ]
    ]
   },
   {
@@ -5076,6 +9304,13 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "volcano-kom",
+     36343,
+     40057
+    ]
    ]
   },
   {
@@ -5092,7 +9327,8 @@
    "sports": [
     "running",
     "cycling"
-   ]
+   ],
+   "segments": []
   },
   {
    "id": 1397026382,
@@ -5108,7 +9344,8 @@
    "sports": [
     "running",
     "cycling"
-   ]
+   ],
+   "segments": []
   },
   {
    "id": 3297733101,
@@ -5123,7 +9360,8 @@
    "event_only": false,
    "sports": [
     "running"
-   ]
+   ],
+   "segments": []
   },
   {
    "id": 3378411990,
@@ -5139,6 +9377,23 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "jarvis-sprint-rev",
+     3814,
+     4015
+    ],
+    [
+     "jarvis-kom-rev",
+     4258,
+     5557
+    ],
+    [
+     "fuego-flats-rev",
+     18582,
+     25665
+    ]
    ]
   },
   {
@@ -5155,6 +9410,23 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "zwift-kom-rev",
+     7022,
+     9492
+    ],
+    [
+     "zwift-kom",
+     21449,
+     22345
+    ],
+    [
+     "watopia-sprint",
+     26661,
+     26986
+    ]
    ]
   },
   {
@@ -5171,6 +9443,23 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "zwift-kom-rev",
+     4792,
+     7267
+    ],
+    [
+     "watopia-sprint",
+     15235,
+     15573
+    ],
+    [
+     "zwift-kom",
+     19174,
+     20068
+    ]
    ]
   },
   {
@@ -5187,6 +9476,13 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "watopia-sprint",
+     7244,
+     7588
+    ]
    ]
   },
   {
@@ -5203,6 +9499,23 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "hilly-loop",
+     0,
+     9081
+    ],
+    [
+     "zwift-kom",
+     941,
+     1825
+    ],
+    [
+     "watopia-sprint",
+     6148,
+     6490
+    ]
    ]
   },
   {
@@ -5219,6 +9532,18 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "radio-tower-kom",
+     10731,
+     11819
+    ],
+    [
+     "watopia-sprint",
+     29021,
+     29362
+    ]
    ]
   },
   {
@@ -5235,6 +9560,23 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "epic-kom",
+     4391,
+     13801
+    ],
+    [
+     "radio-tower-kom",
+     14241,
+     15331
+    ],
+    [
+     "watopia-sprint",
+     26495,
+     26829
+    ]
    ]
   },
   {
@@ -5251,6 +9593,38 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "epic-kom",
+     4414,
+     13841
+    ],
+    [
+     "radio-tower-kom",
+     14269,
+     15363
+    ],
+    [
+     "zwift-kom-rev",
+     26317,
+     28777
+    ],
+    [
+     "zwift-kom",
+     40716,
+     41611
+    ],
+    [
+     "epic-kom-rev",
+     47646,
+     53834
+    ],
+    [
+     "watopia-sprint",
+     69206,
+     69547
+    ]
    ]
   },
   {
@@ -5267,6 +9641,13 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "fuego-flats",
+     25013,
+     25511
+    ]
    ]
   },
   {
@@ -5283,6 +9664,28 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "jarvis-kom",
+     6445,
+     8247
+    ],
+    [
+     "jarvis-sprint",
+     9587,
+     9801
+    ],
+    [
+     "fuego-flats",
+     21906,
+     22405
+    ],
+    [
+     "titans-grove-kom",
+     32677,
+     35282
+    ]
    ]
   },
   {
@@ -5299,6 +9702,28 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "epic-kom",
+     4291,
+     13695
+    ],
+    [
+     "radio-tower-kom",
+     14127,
+     15213
+    ],
+    [
+     "watopia-sprint",
+     26384,
+     26710
+    ],
+    [
+     "epic-kom",
+     33771,
+     43182
+    ]
    ]
   },
   {
@@ -5315,6 +9740,13 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "volcano-kom",
+     2624,
+     6328
+    ]
    ]
   },
   {
@@ -5330,6 +9762,13 @@
    "event_only": false,
    "sports": [
     "running"
+   ],
+   "segments": [
+    [
+     "volcano-kom",
+     2624,
+     6328
+    ]
    ]
   },
   {
@@ -5346,6 +9785,28 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "jarvis-sprint-rev",
+     3825,
+     4028
+    ],
+    [
+     "jarvis-kom-rev",
+     4264,
+     5562
+    ],
+    [
+     "mayan-mountainside-kom",
+     23500,
+     25489
+    ],
+    [
+     "itza-kom",
+     26096,
+     29844
+    ]
    ]
   },
   {
@@ -5362,6 +9823,28 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "watopia-sprint",
+     7113,
+     7442
+    ],
+    [
+     "hilly-loop",
+     10109,
+     19214
+    ],
+    [
+     "zwift-kom",
+     11059,
+     11947
+    ],
+    [
+     "watopia-sprint",
+     16265,
+     16593
+    ]
    ]
   },
   {
@@ -5378,6 +9861,33 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "watopia-sprint",
+     5618,
+     5944
+    ],
+    [
+     "fuego-flats-rev",
+     17991,
+     25081
+    ],
+    [
+     "fuego-flats",
+     26561,
+     27065
+    ],
+    [
+     "volcano-circuit",
+     43477,
+     47551
+    ],
+    [
+     "volcano-kom",
+     49377,
+     53107
+    ]
    ]
   },
   {
@@ -5394,6 +9904,33 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "zwift-kom",
+     840,
+     1737
+    ],
+    [
+     "titans-grove-kom-rev",
+     15132,
+     16044
+    ],
+    [
+     "titans-grove-kom",
+     58327,
+     60947
+    ],
+    [
+     "zwift-kom-rev",
+     72477,
+     74946
+    ],
+    [
+     "zwift-kom",
+     80593,
+     81485
+    ]
    ]
   },
   {
@@ -5410,6 +9947,33 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "zwift-kom-rev",
+     6913,
+     9385
+    ],
+    [
+     "volcano-kom",
+     14470,
+     18185
+    ],
+    [
+     "watopia-sprint",
+     50358,
+     50693
+    ],
+    [
+     "zwift-kom",
+     59745,
+     60633
+    ],
+    [
+     "watopia-sprint",
+     80401,
+     80734
+    ]
    ]
   },
   {
@@ -5426,6 +9990,48 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "watopia-sprint",
+     5602,
+     5932
+    ],
+    [
+     "fuego-flats-rev",
+     17971,
+     25062
+    ],
+    [
+     "fuego-flats",
+     26540,
+     27028
+    ],
+    [
+     "zwift-kom",
+     40638,
+     41528
+    ],
+    [
+     "titans-grove-kom-rev",
+     53103,
+     53993
+    ],
+    [
+     "volcano-circuit",
+     66455,
+     70524
+    ],
+    [
+     "volcano-kom",
+     72355,
+     76078
+    ],
+    [
+     "epic-kom-rev",
+     86184,
+     92364
+    ]
    ]
   },
   {
@@ -5442,6 +10048,28 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "zwift-kom-rev",
+     6898,
+     9356
+    ],
+    [
+     "volcano-kom",
+     14445,
+     18150
+    ],
+    [
+     "watopia-sprint",
+     50337,
+     50671
+    ],
+    [
+     "epic-kom",
+     63180,
+     72592
+    ]
    ]
   },
   {
@@ -5458,6 +10086,43 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "watopia-sprint",
+     5614,
+     5940
+    ],
+    [
+     "fuego-flats-rev",
+     17997,
+     25087
+    ],
+    [
+     "fuego-flats",
+     26568,
+     27060
+    ],
+    [
+     "titans-grove-kom",
+     37344,
+     39961
+    ],
+    [
+     "zwift-kom-rev",
+     51499,
+     53959
+    ],
+    [
+     "fuego-flats",
+     59222,
+     59711
+    ],
+    [
+     "epic-kom",
+     69752,
+     79165
+    ]
    ]
   },
   {
@@ -5474,6 +10139,13 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "yorkshire-kom",
+     7578,
+     8787
+    ]
    ]
   },
   {
@@ -5490,7 +10162,8 @@
    "sports": [
     "running",
     "cycling"
-   ]
+   ],
+   "segments": []
   },
   {
    "id": 620436060,
@@ -5506,6 +10179,18 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "yorkshire-sprint-rev",
+     2390,
+     2787
+    ],
+    [
+     "yorkshire-kom-rev",
+     3852,
+     5017
+    ]
    ]
   },
   {
@@ -5522,6 +10207,13 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "yorkshire-sprint-rev",
+     2573,
+     2976
+    ]
    ]
   },
   {
@@ -5538,6 +10230,38 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "yorkshire-sprint-rev",
+     2581,
+     2978
+    ],
+    [
+     "yorkshire-sprint-rev",
+     5569,
+     5956
+    ],
+    [
+     "yorkshire-sprint-rev",
+     8548,
+     8944
+    ],
+    [
+     "yorkshire-sprint-rev",
+     11536,
+     11933
+    ],
+    [
+     "yorkshire-sprint-rev",
+     14524,
+     14911
+    ],
+    [
+     "yorkshire-kom-rev",
+     15981,
+     17141
+    ]
    ]
   },
   {
@@ -5553,6 +10277,13 @@
    "event_only": false,
    "sports": [
     "running"
+   ],
+   "segments": [
+    [
+     "yorkshire-sprint-rev",
+     2581,
+     2969
+    ]
    ]
   },
   {
@@ -5569,6 +10300,23 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "yorkshire-sprint-rev",
+     2395,
+     2791
+    ],
+    [
+     "yorkshire-kom",
+     12187,
+     13399
+    ],
+    [
+     "yorkshire-kom-rev",
+     17719,
+     18873
+    ]
    ]
   },
   {
@@ -5585,6 +10333,13 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "yorkshire-kom-rev",
+     902,
+     2068
+    ]
    ]
   },
   {
@@ -5601,6 +10356,28 @@
    "sports": [
     "running",
     "cycling"
+   ],
+   "segments": [
+    [
+     "yorkshire-kom-rev",
+     773,
+     1940
+    ],
+    [
+     "yorkshire-sprint-rev",
+     13123,
+     13518
+    ],
+    [
+     "yorkshire-kom",
+     22918,
+     24122
+    ],
+    [
+     "yorkshire-kom-rev",
+     28446,
+     29608
+    ]
    ]
   }
  ]

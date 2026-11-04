@@ -12,7 +12,7 @@
  *   map_view: route | follow    # whole route, or zoomed on the rider
  *   follow_m: 2500              # width of the map in follow view (metres)
  *   map_rotate: 0 | 90 | 180 | 270, map_mirror: false   # simple style only
- *   show_map / show_profile / show_stats: true
+ *   show_map / show_profile / show_stats / show_segments: true
  */
 
 const CARD_VERSION = "0.2.0";
@@ -32,6 +32,12 @@ const I18N = {
     bpm: "bpm",
     kmh: "km/h",
     grade: "grade",
+    seg_in: "in",
+    seg_left: "left",
+    seg_at: "at",
+    climb: "Climb",
+    sprint: "Sprint",
+    segment: "Segment",
   },
   fr: {
     offline: "Pas sur Zwift",
@@ -47,6 +53,12 @@ const I18N = {
     bpm: "bpm",
     kmh: "km/h",
     grade: "pente",
+    seg_in: "dans",
+    seg_left: "encore",
+    seg_at: "à",
+    climb: "Montée",
+    sprint: "Sprint",
+    segment: "Segment",
   },
 };
 
@@ -59,6 +71,10 @@ const ZONES = [
   [119, "#f47b20"],
   [Infinity, "#e8312f"],
 ];
+
+// Segment colours, as in Zwift: KOM red, sprint green, other timed segments purple.
+const SEG_COLORS = { climb: "#e8312f", sprint: "#38b24a", segment: "#8e5cf7" };
+const SEG_ICONS = { climb: "⛰", sprint: "⚡", segment: "⏱" };
 
 const SVG_NS = "http://www.w3.org/2000/svg";
 const MAP_W = 1000;
@@ -84,12 +100,12 @@ const STYLE = `
   }
   .wrap { display: grid; gap: 12px; padding: 14px; box-sizing: border-box; height: 100%;
     grid-template-columns: minmax(0, 1fr);
-    grid-template-rows: auto auto auto minmax(240px, 1fr) auto;
-    grid-template-areas: "head" "power" "stats" "map" "profile"; }
+    grid-template-rows: auto auto auto auto minmax(240px, 1fr) auto;
+    grid-template-areas: "head" "power" "stats" "seg" "map" "profile"; }
   .wrap.landscape { grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr);
-    grid-template-rows: auto auto minmax(0, 1fr) auto;
-    grid-template-areas: "head head" "power map" "stats map" "profile profile"; }
-  .wrap.landscape .power, .wrap.landscape .stats { align-self: start; }
+    grid-template-rows: auto auto auto minmax(0, 1fr) auto;
+    grid-template-areas: "head head" "power map" "stats map" "seg map" "profile profile"; }
+  .wrap.landscape .power, .wrap.landscape .stats, .wrap.landscape .seg { align-self: start; }
   .wrap.landscape .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .head { grid-area: head; display: flex; align-items: baseline; gap: 12px; min-width: 0; }
   .title { font-size: clamp(20px, 5.5cqi, 34px); font-weight: 700; line-height: 1.1;
@@ -135,7 +151,7 @@ const STYLE = `
     vector-effect: non-scaling-stroke; }
   /* No non-scaling-stroke here: it would make the dash ignore pathLength. Its
      width is set in map units by _fitZwiftView. */
-  .z-done { fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .z-done, .z-segline { fill: none; stroke-linecap: round; stroke-linejoin: round; }
   .z-casing { stroke: #15171b; stroke-opacity: .85; stroke-width: 11px; }
   .z-road { stroke: #f4f4f2; stroke-width: 5px; }
   .z-seg { stroke-width: 5px; }
@@ -146,6 +162,22 @@ const STYLE = `
   .attrib { position: absolute; right: 8px; bottom: 6px; font-size: 10px; color: #fff; opacity: .75;
     text-shadow: 0 0 3px #000; pointer-events: none; }
   .pseg { opacity: .55; }
+  .seg { grid-area: seg; --sc: #8e5cf7; position: relative; overflow: hidden; border-radius: 12px;
+    padding: 8px 14px 10px; display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap;
+    background: color-mix(in srgb, var(--sc) 22%, transparent); border-left: 6px solid var(--sc); }
+  .seg .ico { font-size: clamp(20px, 5.5cqi, 30px); line-height: 1; }
+  .seg .nm { font-size: clamp(18px, 5cqi, 28px); font-weight: 800; }
+  .seg .info { font-size: clamp(15px, 4cqi, 22px); font-weight: 600; color: var(--zm-fg); opacity: .9;
+    font-variant-numeric: tabular-nums; }
+  .seg .info b { font-weight: 800; }
+  .seg .sbar { position: absolute; left: 0; right: 0; bottom: 0; height: 4px; background: transparent; }
+  .seg .sbar > i { display: block; height: 100%; width: 0; background: var(--sc); transition: width .6s linear; }
+  .seg.inside { background: color-mix(in srgb, var(--sc) 38%, transparent); }
+  .pwrap { position: relative; }
+  .ptags { position: absolute; inset: 0 0 auto 0; height: 0; pointer-events: none; }
+  .ptag { position: absolute; top: 2px; transform: translateX(-1px); white-space: nowrap; font-size: 12px;
+    font-weight: 700; padding: 1px 6px 1px 5px; border-left: 3px solid var(--tc); color: #fff;
+    background: color-mix(in srgb, var(--tc) 55%, rgba(0,0,0,.55)); border-radius: 0 4px 4px 0; }
 `;
 
 function el(tag, attrs = {}, parent) {
@@ -182,6 +214,7 @@ class ZwiftMapCard extends HTMLElement {
       show_map: true,
       show_profile: true,
       show_stats: true,
+      show_segments: true,
       ...config,
     };
     this._built = false;
@@ -239,10 +272,11 @@ class ZwiftMapCard extends HTMLElement {
             <div class="stat"><div class="v" data-k="spd">–</div><div class="u">${this._t("kmh")}</div></div>
             <div class="stat"><div class="v" data-k="grd">–</div><div class="u">% ${this._t("grade")}</div></div>
           </div>
+          <div class="seg hidden"><span class="ico"></span><span class="nm"></span><span class="info"></span><div class="sbar"><i></i></div></div>
           <div class="map"><svg viewBox="0 0 ${MAP_W} ${MAP_H}" preserveAspectRatio="xMidYMid meet"></svg><div class="note hidden"></div><div class="attrib hidden">Map: ZwiftHacks</div></div>
           <div class="profile">
             <div class="plabels"><span class="g"></span><span class="f"></span></div>
-            <svg viewBox="0 0 ${PROF_W} ${PROF_H}" preserveAspectRatio="none"></svg>
+            <div class="pwrap"><svg viewBox="0 0 ${PROF_W} ${PROF_H}" preserveAspectRatio="none"></svg><div class="ptags"></div></div>
             <div class="bar"><i></i></div>
           </div>
         </div>
@@ -265,6 +299,12 @@ class ZwiftMapCard extends HTMLElement {
       mapSvg: $(".map svg"),
       note: $(".map .note"),
       attrib: $(".map .attrib"),
+      seg: $(".seg"),
+      segIco: $(".seg .ico"),
+      segNm: $(".seg .nm"),
+      segInfo: $(".seg .info"),
+      segBar: $(".seg .sbar > i"),
+      ptags: $(".ptags"),
       profile: $(".profile"),
       profSvg: $(".profile svg"),
       pGrade: $(".plabels .g"),
@@ -321,6 +361,7 @@ class ZwiftMapCard extends HTMLElement {
     e.hr.textContent = a.heart_rate ? a.heart_rate : "–";
     e.spd.textContent = a.speed_kmh != null ? Math.round(a.speed_kmh) : "–";
     e.grd.textContent = a.gradient_pct != null ? Number(a.gradient_pct).toFixed(1) : "–";
+    this._renderSegmentBanner(a.segment);
     const zone = this._zoneColor(a.power_w);
     e.card.style.setProperty("--zm-zone", zone);
     e.card.style.setProperty("--zm-accent", this._config.accent_color || "#f47b20");
@@ -349,6 +390,68 @@ class ZwiftMapCard extends HTMLElement {
       }
     }
     this._renderLive(a);
+  }
+
+  _renderSegmentBanner(seg) {
+    const e = this._els;
+    if (!seg || !this._config.show_segments) {
+      e.seg.classList.add("hidden");
+      return;
+    }
+    const km = (m) => `${(m / 1000).toFixed(m < 10000 ? 1 : 0)} km`;
+    const len = (m) => (m < 1000 ? `${Math.round(m)} m` : km(m));
+    e.seg.classList.remove("hidden");
+    e.seg.classList.toggle("inside", Boolean(seg.inside));
+    e.seg.style.setProperty("--sc", SEG_COLORS[seg.type] || SEG_COLORS.segment);
+    e.segIco.textContent = SEG_ICONS[seg.type] || SEG_ICONS.segment;
+    e.segNm.textContent = seg.name;
+    const grade = seg.avg_grade != null && seg.type === "climb" ? ` ${this._t("seg_at")} ${seg.avg_grade} %` : "";
+    e.segInfo.innerHTML = seg.inside
+      ? `${this._t("seg_left")} <b>${len(seg.remaining_m)}</b>`
+      : `${this._t("seg_in")} <b>${len(seg.distance_to_m)}</b> · ${len(seg.length_m)}${grade}`;
+    e.segBar.style.width = `${seg.inside ? seg.progress_pct : 0}%`;
+  }
+
+  // Segments of the current route from the catalogue: {from_m, to_m, type, name, color}.
+  _routeSegments(attrs) {
+    if (!this._config.show_segments) return [];
+    return (attrs.segments || []).map(([from_m, to_m, type, name]) => ({
+      from_m, to_m, type, name, color: SEG_COLORS[type] || SEG_COLORS.segment,
+    }));
+  }
+
+  // Coloured stretches drawn over a route path by dashing a copy of it.
+  _drawSegmentLines(parent, d, length, segs, cls, extra = {}) {
+    const lines = [];
+    for (const s of segs) {
+      const a = Math.max(0, Math.min(1, s.from_m / length)) * 1000;
+      const b = Math.max(0, Math.min(1, s.to_m / length)) * 1000;
+      if (b <= a) continue;
+      // A dash pattern starting with a zero-length dash would leave a round-capped
+      // dot at the path's start: shift the pattern with an offset instead.
+      lines.push(el("path", { d, class: cls, stroke: s.color, pathLength: 1000,
+        "stroke-dasharray": `${(b - a).toFixed(2)} 2000`, "stroke-dashoffset": (-a).toFixed(2), ...extra }, parent));
+    }
+    return lines;
+  }
+
+  // Start (white, ringed) and finish (filled) markers of each segment.
+  _drawSegmentDots(parent, pathEl, totalLen, length, segs) {
+    const dots = [];
+    if (!pathEl || !totalLen || !length) return dots;
+    for (const s of segs) {
+      for (const [at, finish] of [[s.from_m, false], [s.to_m, true]]) {
+        let p;
+        try {
+          p = pathEl.getPointAtLength(Math.min(Math.max(at / length, 0), 1) * totalLen);
+        } catch (_err) {
+          continue;
+        }
+        dots.push(el("circle", { cx: p.x.toFixed(1), cy: p.y.toFixed(1), r: 0,
+          fill: finish ? s.color : "#fff", stroke: finish ? "#fff" : s.color, class: "segdot" }, parent));
+      }
+    }
+    return dots;
   }
 
   _zoneColor(power) {
@@ -444,10 +547,10 @@ class ZwiftMapCard extends HTMLElement {
     // ---- profile: [distance from start line (m), altitude (m)]
     const length = attrs.route_length_m || this._zmap?.route_length_m || this._track?.length_m || 0;
     let pts = [];
-    let segs = [];
+    let segs = this._routeSegments(attrs);
     if (zwift && this._zmap.profile?.route?.length > 1) {
       pts = this._zmap.profile.route;
-      segs = this._zmap.profile.segments || [];
+      if (!segs.length && this._config.show_segments) segs = this._zmap.profile.segments || [];
     } else if (this._track) {
       pts = this._track.points.filter((p) => p[0] >= 0 && p[0] <= length).map((p) => [p[0], p[3]]);
     }
@@ -487,7 +590,29 @@ class ZwiftMapCard extends HTMLElement {
     } else {
       this._profPts = null;
     }
+    this._drawProfileTags(segs, span);
     L.cursor = el("line", { y1: 0, y2: PROF_H, class: "cursor" }, prof);
+  }
+
+  // Segment names above the profile, skipping those that would overlap.
+  _drawProfileTags(segs, span) {
+    const box = this._els.ptags;
+    box.replaceChildren();
+    if (!span || !this._profPts) return;
+    const width = this._els.profSvg.clientWidth || 600;
+    let freeFrom = -Infinity;
+    for (const s of [...segs].filter((x) => x.name).sort((a, b) => a.from_m - b.from_m)) {
+      const left = (Math.max(s.from_m, 0) / span) * width;
+      const w = 18 + s.name.length * 7;
+      if (left < freeFrom || left + Math.min(w, 60) > width) continue;
+      const tag = document.createElement("span");
+      tag.className = "ptag";
+      tag.textContent = `${SEG_ICONS[s.type] || ""} ${s.name}`.trim();
+      tag.style.setProperty("--tc", s.color);
+      tag.style.left = `${Math.min(left, width - w)}px`;
+      box.appendChild(tag);
+      freeFrom = left + w + 6;
+    }
   }
 
   _drawSimpleMap(attrs) {
@@ -503,6 +628,18 @@ class ZwiftMapCard extends HTMLElement {
       // Distance-proportional dash: points are evenly spaced along the road.
       const onRoute = track.points.filter((p) => p[0] >= 0).map((p) => this._project([p[1], p[2]]));
       this._live.done = el("path", { d: polyline(onRoute), class: "done", "stroke-width": 14, pathLength: 1000, "stroke-dasharray": "0 1000" }, map);
+      const segs = this._routeSegments(attrs);
+      const len = attrs.route_length_m || track.length_m;
+      if (segs.length && len) {
+        this._drawSegmentLines(map, polyline(onRoute), len, segs, "segline",
+          { fill: "none", "stroke-width": 9, "stroke-linecap": "round" });
+        let total = 0;
+        try { total = this._live.done.getTotalLength(); } catch (_err) { total = 0; }
+        for (const dot of this._drawSegmentDots(map, this._live.done, total, len, segs)) {
+          dot.setAttribute("r", 9);
+          dot.setAttribute("stroke-width", 4);
+        }
+      }
     } else {
       this._project = null;
     }
@@ -531,17 +668,23 @@ class ZwiftMapCard extends HTMLElement {
     if (z.leadin) el("path", { d: z.leadin, class: "z-lead" }, map);
     el("path", { d: z.route, class: "z-casing" }, map);
     L.route = el("path", { d: z.route, class: "z-road" }, map);
-    for (const s of z.segments || []) el("path", { d: s.d, class: "z-seg", stroke: s.color }, map);
-    L.done = el("path", { d: z.route, class: "z-done", pathLength: 1000, "stroke-dasharray": "0 1000" }, map);
     L.leadPath = z.leadin ? el("path", { d: z.leadin, fill: "none", stroke: "none" }, map) : null;
-    L.halo = el("circle", { r: 0, class: "z-halo" }, map);
-    L.me = el("circle", { r: 0, class: "z-me" }, map);
     try {
       this._routeLen = L.route.getTotalLength();
       this._leadLen = L.leadPath ? L.leadPath.getTotalLength() : 0;
     } catch (_err) {
       this._routeLen = this._leadLen = 0;
     }
+    const segs = this._routeSegments(attrs);
+    const length = attrs.route_length_m || 0;
+    if (!segs.length && this._config.show_segments) {
+      for (const s of z.segments || []) el("path", { d: s.d, class: "z-seg", stroke: s.color }, map);
+    }
+    L.done = el("path", { d: z.route, class: "z-done", pathLength: 1000, "stroke-dasharray": "0 1000" }, map);
+    L.segLines = length ? this._drawSegmentLines(map, z.route, length, segs, "z-segline") : [];
+    L.segDots = this._drawSegmentDots(map, L.route, this._routeLen, length, segs);
+    L.halo = el("circle", { r: 0, class: "z-halo" }, map);
+    L.me = el("circle", { r: 0, class: "z-me" }, map);
     this._fitZwiftView();
   }
 
@@ -576,6 +719,11 @@ class ZwiftMapCard extends HTMLElement {
       this._live.me.setAttribute("r", (11 * unit).toFixed(0));
       this._live.halo.setAttribute("r", (24 * unit).toFixed(0));
       this._live.done?.setAttribute("stroke-width", (7 * unit).toFixed(0));
+      for (const line of this._live.segLines || []) line.setAttribute("stroke-width", (5 * unit).toFixed(0));
+      for (const dot of this._live.segDots || []) {
+        dot.setAttribute("r", (6 * unit).toFixed(0));
+        dot.setAttribute("stroke-width", (3 * unit).toFixed(0));
+      }
     }
   }
 
