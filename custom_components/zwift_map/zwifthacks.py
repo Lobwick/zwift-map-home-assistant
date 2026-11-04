@@ -191,6 +191,34 @@ def parse_route_svg(svg: str) -> dict[str, Any]:
     }
 
 
+def route_info_from_map(route_id: int, data: dict[str, Any]) -> dict[str, Any] | None:
+    """Length, lead-in and loop flag of a route, from its ZwiftHacks map.
+
+    Used when neither the bundled catalogue nor Zwift's game_info knows the
+    route. Distances come from the elevation profile (metres from the start
+    line); the lead-in is the event one.
+    """
+    prof = (data.get("profile") or {}).get("route") or []
+    if len(prof) < 2:
+        return None
+    length = int(round(prof[-1][0]))
+    if length <= 0:
+        return None
+    leadin = (data.get("profile") or {}).get("leadin") or []
+    lead_in = int(round(-leadin[0][0])) if leadin and leadin[0][0] < 0 else 0
+    pts = _pairs(data.get("route") or "")
+    loop = bool(pts) and abs(pts[0][0] - pts[-1][0]) + abs(pts[0][1] - pts[-1][1]) < 20000  # 200 m
+    alts = [p[1] for p in prof]
+    climb = sum(max(b - a, 0) for a, b in zip(alts, alts[1:], strict=False))
+    return {
+        "id": route_id,
+        "distance_m": length,
+        "lead_in_m": lead_in,
+        "elevation_m": int(round(climb)),
+        "lap": loop,
+    }
+
+
 def background_name(href: str | None) -> str | None:
     """File name of a ZwiftHacks background picture, if it is one we accept."""
     if not href:

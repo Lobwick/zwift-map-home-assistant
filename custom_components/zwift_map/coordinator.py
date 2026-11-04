@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import json
 import logging
+import time
 from dataclasses import dataclass
 from datetime import timedelta
 from pathlib import Path
@@ -20,6 +21,8 @@ from .api import ZwiftAuthError, ZwiftClient, ZwiftError, ZwiftNotRiding, ZwiftR
 from .const import (
     CONF_PLAYER_ID,
     DOMAIN,
+    GAME_INFO_FILE,
+    GAME_INFO_MAX_AGE_S,
     OFFLINE_INTERVAL,
     ONLINE_INTERVAL,
     RATE_LIMIT_DECAY_S,
@@ -31,7 +34,7 @@ from .const import (
     TRACKS_DIR,
 )
 from .protobuf import PlayerState
-from .routes import RouteCatalogue, RouteInfo
+from .routes import RouteCatalogue, RouteInfo, course_name
 from .tracker import (
     PHASE_LEAD_IN,
     PHASE_ON_ROUTE,
@@ -42,6 +45,7 @@ from .tracker import (
     SegmentStatus,
     segment_status,
 )
+from .zwifthacks import route_info_from_map
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -92,6 +96,7 @@ class ZwiftMapCoordinator(DataUpdateCoordinator[ZwiftMapData]):
         self._track_saved_at = dt_util.utcnow()
         self._track_version = 0
         self._rate_penalty_s = 0.0
+        self._fallback_tried: set[int] = set()
         self._last_world_time = 0
         self._world_time_changed_at = dt_util.utcnow()
         self.data = ZwiftMapData()
@@ -102,6 +107,64 @@ class ZwiftMapCoordinator(DataUpdateCoordinator[ZwiftMapData]):
         """Restore the in-progress route after a Home Assistant restart."""
         stored = await self._store.async_load() or {}
         self._progress.restore(stored.get("progress"))
+        await self._async_load_game_info()
+
+    async def _async_load_game_info(self) -> None:
+        """Merge Zwift's own route list (cached a day) into the catalogue.
+
+        The bundled catalogue misses routes added after it was built; Zwift's
+        game_info has them all. Best effort: failures only cost those names.
+        """
+        path = Path(self.hass.config.path(GAME_INFO_FILE))
+        cached = await self.hass.async_add_executor_job(self._read_json, path)
+        data = cached.get("data") if isinstance(cached, dict) else None
+        fresh = isinstance(cached, dict) and time.time() - cached.get("fetched_at", 0) < GAME_INFO_MAX_AGE_S
+        if not fresh:
+            try:
+                data = await self.client.async_get_game_info()
+                payload = {"fetched_at": time.time(), "data": data}
+                await self.hass.async_add_executor_job(self._write_json, path, payload)
+            except Exception as err:  # network, auth, format: keep the cached copy
+                _LOGGER.warning("Could not fetch Zwift's route list (game_info): %s", err)
+        if isinstance(data, dict):
+            added = self.catalogue.merge_game_info(data)
+            _LOGGER.debug("game_info added %s routes to the catalogue", added)
+
+    def _read_json(self, path: Path) -> Any:
+        try:
+            return json.loads(path.read_text(encoding="utf-8"))
+        except (OSError, ValueError):
+            return None
+
+    def _write_json(self, path: Path, payload: Any) -> None:
+        path.parent.mkdir(parents=True, exist_ok=True)
+        tmp = path.with_suffix(".tmp")
+        tmp.write_text(json.dumps(payload, separators=(",", ":")), encoding="utf-8")
+        tmp.replace(path)
+
+    async def _async_route_from_zwifthacks(self, route_id: int, world: str | None) -> None:
+        """Last resort for a route nobody else knows: its ZwiftHacks map."""
+        cache = self.hass.data.get(f"{DOMAIN}_zwifthacks")
+        if cache is None:
+            return
+        data = await cache.async_get_map(route_id)
+        info = route_info_from_map(route_id, data) if data else None
+        if not info or self.catalogue.get(route_id):
+            return
+        self.catalogue.add(
+            RouteInfo(
+                id=route_id,
+                name=f"Route {route_id}",
+                world=world or "",
+                world_id=None,
+                distance_m=info["distance_m"],
+                elevation_m=info["elevation_m"],
+                lead_in_m=info["lead_in_m"],
+                lead_in_free_ride_m=None,
+                lap=info["lap"],
+                event_only=False,
+            )
+        )
 
     async def async_shutdown(self) -> None:
         await self._async_save_track(force=True)
@@ -164,6 +227,11 @@ class ZwiftMapCoordinator(DataUpdateCoordinator[ZwiftMapData]):
 
     async def _process(self, state: PlayerState) -> ZwiftMapData:
         route = self.catalogue.get(state.route_id)
+        if route is None and state.route_id and state.route_id not in self._fallback_tried:
+            self._fallback_tried.add(state.route_id)
+            self.hass.async_create_task(
+                self._async_route_from_zwifthacks(state.route_id, course_name(state.course_id))
+            )
         previous_route_id = self._progress.route_id
         progress = self._progress.update(
             state.route_id, state.distance_m, route, in_event=state.in_event
@@ -177,7 +245,7 @@ class ZwiftMapCoordinator(DataUpdateCoordinator[ZwiftMapData]):
         self._record(progress, state)
         await self._async_save_track()
 
-        world = self.catalogue.world_name(state.world_id) or (route.world if route else None)
+        world = course_name(state.course_id) or (route.world if route else None)
         return ZwiftMapData(
             riding=True,
             state=state,

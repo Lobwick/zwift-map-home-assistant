@@ -11,6 +11,54 @@ CATALOGUE_PATH = Path(__file__).parent / "data" / "routes.json"
 
 SEGMENT_TYPES = ("sprint", "climb", "segment")
 
+# Zwift course ids, as sent live by the relay (field 35 / field 19), are not
+# the world ids of the route catalogue: Watopia is course 6 but world 1.
+COURSE_NAMES = {
+    2: "Richmond",
+    6: "Watopia",
+    7: "London",
+    8: "New York",
+    9: "Innsbruck",
+    10: "Bologna",
+    11: "Yorkshire",
+    12: "Crit City",
+    13: "Makuri Islands",
+    14: "France",
+    15: "Paris",
+    16: "Gravel Mountain",
+    17: "Scotland",
+}
+
+
+def _metres(route: dict, key: str) -> int | None:
+    value = route.get(key)
+    return None if value is None else int(round(float(value)))
+
+
+# World names as Zwift's game_info spells them.
+MAP_NAMES = {
+    "WATOPIA": "Watopia",
+    "RICHMOND": "Richmond",
+    "LONDON": "London",
+    "NEWYORK": "New York",
+    "INNSBRUCK": "Innsbruck",
+    "BOLOGNATT": "Bologna",
+    "YORKSHIRE": "Yorkshire",
+    "CRITCITY": "Crit City",
+    "MAKURIISLANDS": "Makuri Islands",
+    "FRANCE": "France",
+    "PARIS": "Paris",
+    "GRAVEL MOUNTAIN": "Gravel Mountain",
+    "SCOTLAND": "Scotland",
+}
+
+
+def course_name(course: int | None) -> str | None:
+    """World name for a live course id."""
+    if not course:
+        return None
+    return COURSE_NAMES.get(course, f"Course {course}")
+
 
 @dataclass(frozen=True, slots=True)
 class RouteSegment:
@@ -116,6 +164,43 @@ class RouteCatalogue:
     def load(cls, path: Path = CATALOGUE_PATH) -> RouteCatalogue:
         """Read the catalogue file (blocking: call from an executor)."""
         return cls(json.loads(path.read_text(encoding="utf-8")))
+
+    def add(self, route: RouteInfo) -> None:
+        """Add a route the bundled catalogue does not know."""
+        self._routes.setdefault(route.id, route)
+
+    def merge_game_info(self, data: dict) -> int:
+        """Add the routes of Zwift's ``game_info`` missing from the catalogue.
+
+        Bundled routes keep their data (they carry segment positions); new
+        routes get Zwift's own name, length and lead-ins. Returns the number of
+        routes added.
+        """
+        added = 0
+        for world in data.get("maps", []):
+            world_name = MAP_NAMES.get(world.get("name", ""), str(world.get("name", "")).title())
+            for r in world.get("routes", []):
+                try:
+                    rid = int(r["id"]) & 0xFFFFFFFF
+                    distance = int(round(float(r["distanceInMeters"])))
+                except (KeyError, TypeError, ValueError):
+                    continue
+                if rid in self._routes or distance <= 0:
+                    continue
+                self._routes[rid] = RouteInfo(
+                    id=rid,
+                    name=str(r.get("name") or f"Route {rid}"),
+                    world=world_name,
+                    world_id=None,
+                    distance_m=distance,
+                    elevation_m=_metres(r, "ascentInMeters"),
+                    lead_in_m=_metres(r, "leadinDistanceInMeters") or 0,
+                    lead_in_free_ride_m=_metres(r, "freeRideLeadinDistanceInMeters"),
+                    lap=bool(r.get("supportedLaps", True)),
+                    event_only=bool(r.get("publicEventsOnly", False)),
+                )
+                added += 1
+        return added
 
     def __len__(self) -> int:
         return len(self._routes)

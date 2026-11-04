@@ -3,7 +3,7 @@
 from datetime import timedelta
 
 DOMAIN = "zwift_map"
-VERSION = "0.2.0"
+VERSION = "0.3.0"
 
 CONF_PLAYER_ID = "player_id"
 
@@ -24,6 +24,8 @@ TRACK_SAVE_INTERVAL = timedelta(seconds=60)
 
 TRACKS_DIR = "zwift_map/tracks"
 ZWIFTHACKS_DIR = "zwift_map/zwifthacks"
+GAME_INFO_FILE = "zwift_map/game_info.json"
+GAME_INFO_MAX_AGE_S = 24 * 3600
 STORAGE_VERSION = 1
 
 STATIC_URL = "/zwift_map_static"
