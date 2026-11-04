@@ -131,13 +131,16 @@ const STYLE = `
   .line { vector-effect: non-scaling-stroke; }
   .map.zwift { border-radius: 14px; overflow: hidden; background: #2b4a5e; }
   .map.zwift svg { min-height: 260px; }
-  .z-casing, .z-road, .z-seg, .z-done, .z-lead { fill: none; stroke-linecap: round; stroke-linejoin: round;
+  .z-casing, .z-road, .z-seg, .z-lead { fill: none; stroke-linecap: round; stroke-linejoin: round;
     vector-effect: non-scaling-stroke; }
+  /* No non-scaling-stroke here: it would make the dash ignore pathLength. Its
+     width is set in map units by _fitZwiftView. */
+  .z-done { fill: none; stroke-linecap: round; stroke-linejoin: round; }
   .z-casing { stroke: #15171b; stroke-opacity: .85; stroke-width: 11px; }
   .z-road { stroke: #f4f4f2; stroke-width: 5px; }
   .z-seg { stroke-width: 5px; }
   .z-lead { stroke: #f4f4f2; stroke-width: 4px; stroke-dasharray: 2 7; stroke-opacity: .9; }
-  .z-done { stroke: var(--zm-done); stroke-width: 7px; }
+  .z-done { stroke: var(--zm-done); }
   .z-me { fill: var(--zm-done); stroke: #fff; stroke-width: 4px; vector-effect: non-scaling-stroke; }
   .z-halo { fill: var(--zm-done); fill-opacity: .3; }
   .attrib { position: absolute; right: 8px; bottom: 6px; font-size: 10px; color: #fff; opacity: .75;
@@ -572,6 +575,7 @@ class ZwiftMapCard extends HTMLElement {
     if (this._live?.me) {
       this._live.me.setAttribute("r", (11 * unit).toFixed(0));
       this._live.halo.setAttribute("r", (24 * unit).toFixed(0));
+      this._live.done?.setAttribute("stroke-width", (7 * unit).toFixed(0));
     }
   }
 
