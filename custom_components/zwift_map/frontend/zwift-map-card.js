@@ -15,7 +15,7 @@
  *   show_map / show_profile / show_stats / show_segments: true
  */
 
-const CARD_VERSION = "0.2.0";
+const CARD_VERSION = "0.3.0";
 
 const I18N = {
   en: {

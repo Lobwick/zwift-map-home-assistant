@@ -3,7 +3,7 @@
 from datetime import timedelta
 
 DOMAIN = "zwift_map"
-VERSION = "0.2.0"
+VERSION = "0.3.0"
 
 CONF_PLAYER_ID = "player_id"
 
