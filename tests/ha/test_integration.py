@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import json
 from datetime import timedelta
+from pathlib import Path
 from unittest.mock import AsyncMock, patch
 
 import pytest
@@ -167,6 +168,28 @@ async def test_ride_progress_track_and_view(
         resp = await client.get("/zwift_map_static/zwift-map-card.js")
         assert resp.status == 200
         assert "zwift-map-card" in await resp.text()
+
+        # Zwift-style map: downloaded from ZwiftHacks on first request, then cached.
+        cache = hass.data["zwift_map_zwifthacks"]
+        svg = (Path(__file__).parents[1] / "fixtures" / "zwifthacks_big_loop.svg").read_text()
+        index = f'<div data-type="routes" data-map="1" data-route="11" data-signature="{BIG_LOOP}">'
+
+        async def fetch_text(url):
+            return index if url.endswith("/app/routes/") else svg
+
+        async def fetch_bytes(url):
+            return b"\x89PNG background"
+
+        cache._fetch_text, cache._fetch_bytes = fetch_text, fetch_bytes
+        resp = await client.get(f"/api/zwift_map/map/{BIG_LOOP}")
+        assert resp.status == 200
+        route_map = await resp.json()
+        assert route_map["background"]["url"] == "/zwift_map_maps/watopia_50pct.png"
+        assert route_map["profile"]["route"][0] == [0.0, 18.2]
+        resp = await client.get("/zwift_map_maps/watopia_50pct.png")
+        assert resp.status == 200
+        assert await resp.read() == b"\x89PNG background"
+        assert (await client.get("/api/zwift_map/map/42")).status == 404
 
     # Ride ends: the relay stops answering, the track is written to /config.
     with (

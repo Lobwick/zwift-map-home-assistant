@@ -7,12 +7,15 @@
  *   zone_color_entity: light.zwift_<name>_power_zone_color   # optional
  *   ftp_entity: sensor.zwift_<name>_ftp                      # optional (or ftp: 252)
  *   layout: auto | portrait | landscape                      # default auto
- *   map_rotate: 0 | 90 | 180 | 270                           # default 0
- *   map_mirror: false
+ *   map_style: zwift | simple   # zwift: world map + route from ZwiftHacks (cached by
+ *                               # the integration); simple: route recorded from your rides
+ *   map_view: route | follow    # whole route, or zoomed on the rider
+ *   follow_m: 2500              # width of the map in follow view (metres)
+ *   map_rotate: 0 | 90 | 180 | 270, map_mirror: false   # simple style only
  *   show_map / show_profile / show_stats: true
  */
 
-const CARD_VERSION = "0.1.0";
+const CARD_VERSION = "0.2.0";
 
 const I18N = {
   en: {
@@ -126,6 +129,20 @@ const STYLE = `
   .line { fill: none; stroke: color-mix(in srgb, var(--zm-fg) 45%, transparent); stroke-width: 2; }
   .cursor { stroke: #fff; stroke-width: 3; vector-effect: non-scaling-stroke; }
   .line { vector-effect: non-scaling-stroke; }
+  .map.zwift { border-radius: 14px; overflow: hidden; background: #2b4a5e; }
+  .map.zwift svg { min-height: 260px; }
+  .z-casing, .z-road, .z-seg, .z-done, .z-lead { fill: none; stroke-linecap: round; stroke-linejoin: round;
+    vector-effect: non-scaling-stroke; }
+  .z-casing { stroke: #15171b; stroke-opacity: .85; stroke-width: 11px; }
+  .z-road { stroke: #f4f4f2; stroke-width: 5px; }
+  .z-seg { stroke-width: 5px; }
+  .z-lead { stroke: #f4f4f2; stroke-width: 4px; stroke-dasharray: 2 7; stroke-opacity: .9; }
+  .z-done { stroke: var(--zm-done); stroke-width: 7px; }
+  .z-me { fill: var(--zm-done); stroke: #fff; stroke-width: 4px; vector-effect: non-scaling-stroke; }
+  .z-halo { fill: var(--zm-done); fill-opacity: .3; }
+  .attrib { position: absolute; right: 8px; bottom: 6px; font-size: 10px; color: #fff; opacity: .75;
+    text-shadow: 0 0 3px #000; pointer-events: none; }
+  .pseg { opacity: .55; }
 `;
 
 function el(tag, attrs = {}, parent) {
@@ -154,6 +171,9 @@ class ZwiftMapCard extends HTMLElement {
     if (!config || !config.entity) throw new Error("entity is required (sensor.zwift_map_live)");
     this._config = {
       layout: "auto",
+      map_style: "zwift",
+      map_view: "route",
+      follow_m: 2500,
       map_rotate: 0,
       map_mirror: false,
       show_map: true,
@@ -163,6 +183,8 @@ class ZwiftMapCard extends HTMLElement {
     };
     this._built = false;
     this._trackKey = null;
+    this._mapRoute = undefined;
+    this._zmap = null;
     this._trail = [];
     if (this._hass) this._update();
   }
@@ -182,7 +204,10 @@ class ZwiftMapCard extends HTMLElement {
 
   connectedCallback() {
     if (!this._ro) {
-      this._ro = new ResizeObserver(() => this._applyLayout());
+      this._ro = new ResizeObserver(() => {
+        this._applyLayout();
+        this._fitZwiftView();
+      });
     }
     this._ro.observe(this);
   }
@@ -211,7 +236,7 @@ class ZwiftMapCard extends HTMLElement {
             <div class="stat"><div class="v" data-k="spd">–</div><div class="u">${this._t("kmh")}</div></div>
             <div class="stat"><div class="v" data-k="grd">–</div><div class="u">% ${this._t("grade")}</div></div>
           </div>
-          <div class="map"><svg viewBox="0 0 ${MAP_W} ${MAP_H}" preserveAspectRatio="xMidYMid meet"></svg><div class="note hidden"></div></div>
+          <div class="map"><svg viewBox="0 0 ${MAP_W} ${MAP_H}" preserveAspectRatio="xMidYMid meet"></svg><div class="note hidden"></div><div class="attrib hidden">Map: ZwiftHacks</div></div>
           <div class="profile">
             <div class="plabels"><span class="g"></span><span class="f"></span></div>
             <svg viewBox="0 0 ${PROF_W} ${PROF_H}" preserveAspectRatio="none"></svg>
@@ -236,6 +261,7 @@ class ZwiftMapCard extends HTMLElement {
       map: $(".map"),
       mapSvg: $(".map svg"),
       note: $(".map .note"),
+      attrib: $(".map .attrib"),
       profile: $(".profile"),
       profSvg: $(".profile svg"),
       pGrade: $(".plabels .g"),
@@ -296,13 +322,21 @@ class ZwiftMapCard extends HTMLElement {
     e.card.style.setProperty("--zm-zone", zone);
     e.card.style.setProperty("--zm-accent", this._config.accent_color || "#f47b20");
 
-    // Route geometry
-    const key = `${a.route_id || 0}:${a.track_version}`;
-    if (key !== this._trackKey) {
-      if ((a.route_id || 0) !== this._trackRoute) this._trail = [];
-      this._trackKey = key;
-      this._trackRoute = a.route_id || 0;
-      this._loadTrack(a.route_id, a);
+    // Route geometry: the Zwift-style map once per route, otherwise the
+    // recorded track (reloaded when it grows).
+    const routeId = a.route_id || 0;
+    if (routeId !== this._mapRoute) {
+      this._trail = [];
+      this._mapRoute = routeId;
+      this._zmap = null;
+      this._trackKey = null;
+      this._loadGeometry(routeId, a);
+    } else if (!this._zmap && !this._loadingMap) {
+      const key = `${routeId}:${a.track_version}`;
+      if (key !== this._trackKey) {
+        this._trackKey = key;
+        this._loadTrack(routeId, a);
+      }
     }
     if (a.x != null && a.z != null) {
       const last = this._trail[this._trail.length - 1];
@@ -323,6 +357,27 @@ class ZwiftMapCard extends HTMLElement {
     if (!ftp || power == null) return ZONES[0][1];
     const pct = (power / ftp) * 100;
     return ZONES.find(([max]) => pct < max)[1];
+  }
+
+  async _loadGeometry(routeId, attrs) {
+    if (routeId && this._config.map_style !== "simple") {
+      this._loadingMap = true;
+      let zmap = null;
+      try {
+        zmap = await this._hass.callApi("GET", `zwift_map/map/${routeId}`);
+      } catch (_err) {
+        zmap = null;
+      }
+      this._loadingMap = false;
+      if (routeId !== this._mapRoute) return; // the route changed meanwhile
+      if (zmap && zmap.route) {
+        this._zmap = zmap;
+        this._drawStatic(attrs);
+        return;
+      }
+    }
+    this._trackKey = `${routeId}:${attrs.track_version}`;
+    await this._loadTrack(routeId, attrs);
   }
 
   async _loadTrack(routeId, attrs) {
@@ -374,20 +429,74 @@ class ZwiftMapCard extends HTMLElement {
 
   _drawStatic(attrs) {
     const e = this._els;
-    const map = e.mapSvg;
-    const prof = e.profSvg;
-    map.replaceChildren();
-    prof.replaceChildren();
+    e.mapSvg.replaceChildren();
+    e.profSvg.replaceChildren();
     this._live = {};
-    const track = this._track;
-    const length = attrs.route_length_m || track?.length_m || 0;
+    const zwift = Boolean(this._zmap);
+    e.map.classList.toggle("zwift", zwift);
+    e.attrib.classList.toggle("hidden", !zwift);
+    if (zwift) this._drawZwiftMap(attrs);
+    else this._drawSimpleMap(attrs);
 
-    // ---- map
+    // ---- profile: [distance from start line (m), altitude (m)]
+    const length = attrs.route_length_m || this._zmap?.route_length_m || this._track?.length_m || 0;
+    let pts = [];
+    let segs = [];
+    if (zwift && this._zmap.profile?.route?.length > 1) {
+      pts = this._zmap.profile.route;
+      segs = this._zmap.profile.segments || [];
+    } else if (this._track) {
+      pts = this._track.points.filter((p) => p[0] >= 0 && p[0] <= length).map((p) => [p[0], p[3]]);
+    }
+    this._drawProfile(pts, length, segs);
+    this._renderLive(attrs);
+  }
+
+  _drawProfile(pts, length, segs) {
+    const prof = this._els.profSvg;
+    const L = this._live;
+    const span = length || (pts.length ? pts[pts.length - 1][0] : 0);
+    this._profSpan = span;
+    if (pts.length > 1 && span) {
+      let lo = Infinity, hi = -Infinity;
+      for (const p of pts) {
+        if (p[1] < lo) lo = p[1];
+        if (p[1] > hi) hi = p[1];
+      }
+      const range = Math.max(hi - lo, 20);
+      const py = (alt) => PROF_H - 8 - ((alt - lo) / range) * (PROF_H - 12);
+      const px = (d) => (d / span) * PROF_W;
+      const line = pts.map((p) => [px(p[0]), py(p[1])]);
+      const area = polyline(line) + `L${PROF_W} ${PROF_H}L0 ${PROF_H}Z`;
+      const defs = el("defs", {}, prof);
+      const done = el("clipPath", { id: "zm-done" }, defs);
+      L.clip = el("rect", { x: 0, y: 0, width: 0, height: PROF_H }, done);
+      const under = el("clipPath", { id: "zm-under" }, defs);
+      el("path", { d: area }, under);
+      el("path", { d: area, class: "area" }, prof);
+      for (const s of segs) {
+        el("rect", { x: px(s.from_m), y: 0, width: Math.max(px(s.to_m) - px(s.from_m), 1), height: PROF_H,
+          fill: s.color, class: "pseg", "clip-path": "url(#zm-under)" }, prof);
+      }
+      el("path", { d: area, class: "area-done", "clip-path": "url(#zm-done)" }, prof);
+      el("path", { d: polyline(line), class: "line" }, prof);
+      this._profPts = pts;
+    } else {
+      this._profPts = null;
+    }
+    L.cursor = el("line", { y1: 0, y2: PROF_H, class: "cursor" }, prof);
+  }
+
+  _drawSimpleMap(attrs) {
+    const e = this._els;
+    const map = e.mapSvg;
+    const track = this._track;
+    map.setAttribute("viewBox", `0 0 ${MAP_W} ${MAP_H}`);
+    map.setAttribute("preserveAspectRatio", "xMidYMid meet");
     if (track) {
       const pts = track.points.map((p) => [p[1], p[2]]);
       this._project = this._projector(pts);
-      const d = polyline(pts.map(this._project));
-      el("path", { d, class: "road", "stroke-width": 26 }, map);
+      el("path", { d: polyline(pts.map(this._project)), class: "road", "stroke-width": 26 }, map);
       // Distance-proportional dash: points are evenly spaced along the road.
       const onRoute = track.points.filter((p) => p[0] >= 0).map((p) => this._project([p[1], p[2]]));
       this._live.done = el("path", { d: polyline(onRoute), class: "done", "stroke-width": 14, pathLength: 1000, "stroke-dasharray": "0 1000" }, map);
@@ -397,37 +506,73 @@ class ZwiftMapCard extends HTMLElement {
     this._live.trail = el("path", { class: "trail", "stroke-width": 10 }, map);
     this._live.halo = el("circle", { r: 34, class: "halo" }, map);
     this._live.me = el("circle", { r: 16, class: "me", "stroke-width": 5 }, map);
-
     const coverage = track?.coverage ?? 0;
     e.note.textContent = track ? this._t("recording") : this._t("no_track");
     e.note.classList.toggle("recording", Boolean(track));
     e.note.classList.toggle("hidden", Boolean(track) && coverage >= 0.98);
+  }
 
-    // ---- profile
-    const prPts = track ? track.points.filter((p) => p[0] >= 0 && p[0] <= length) : [];
-    if (prPts.length > 1 && length) {
-      let lo = Infinity, hi = -Infinity;
-      for (const p of prPts) {
-        if (p[3] < lo) lo = p[3];
-        if (p[3] > hi) hi = p[3];
-      }
-      const range = Math.max(hi - lo, 20);
-      const top = 12;
-      this._py = (alt) => PROF_H - 8 - ((alt - lo) / range) * (PROF_H - top);
-      const line = prPts.map((p) => [(p[0] / length) * PROF_W, this._py(p[3])]);
-      const area = polyline(line) + `L${PROF_W} ${PROF_H}L0 ${PROF_H}Z`;
-      const clip = el("clipPath", { id: "zm-done" }, el("defs", {}, prof));
-      this._live.clip = el("rect", { x: 0, y: 0, width: 0, height: PROF_H }, clip);
-      el("path", { d: area, class: "area" }, prof);
-      el("path", { d: area, class: "area-done", "clip-path": "url(#zm-done)" }, prof);
-      el("path", { d: polyline(line), class: "line" }, prof);
-      this._profPts = prPts;
-    } else {
-      this._py = null;
-      this._profPts = null;
+  // World map + route from ZwiftHacks, in its world coordinates (centimetres).
+  _drawZwiftMap(attrs) {
+    const e = this._els;
+    const map = e.mapSvg;
+    const z = this._zmap;
+    const L = this._live;
+    e.note.classList.add("hidden");
+    map.setAttribute("preserveAspectRatio", "xMidYMid slice");
+    const bg = z.background;
+    if (bg && bg.url) {
+      el("image", { href: bg.url, x: bg.x, y: bg.y, width: bg.width, height: bg.height,
+        preserveAspectRatio: "none", opacity: bg.opacity ?? 1 }, map);
     }
-    this._live.cursor = el("line", { y1: 0, y2: PROF_H, class: "cursor" }, prof);
-    this._renderLive(attrs);
+    if (z.leadin) el("path", { d: z.leadin, class: "z-lead" }, map);
+    el("path", { d: z.route, class: "z-casing" }, map);
+    L.route = el("path", { d: z.route, class: "z-road" }, map);
+    for (const s of z.segments || []) el("path", { d: s.d, class: "z-seg", stroke: s.color }, map);
+    L.done = el("path", { d: z.route, class: "z-done", pathLength: 1000, "stroke-dasharray": "0 1000" }, map);
+    L.leadPath = z.leadin ? el("path", { d: z.leadin, fill: "none", stroke: "none" }, map) : null;
+    L.halo = el("circle", { r: 0, class: "z-halo" }, map);
+    L.me = el("circle", { r: 0, class: "z-me" }, map);
+    try {
+      this._routeLen = L.route.getTotalLength();
+      this._leadLen = L.leadPath ? L.leadPath.getTotalLength() : 0;
+    } catch (_err) {
+      this._routeLen = this._leadLen = 0;
+    }
+    this._fitZwiftView();
+  }
+
+  // Fit the route's view to the map box (no letterboxing), or follow the rider.
+  _fitZwiftView(center) {
+    if (!this._zmap || !this._els) return;
+    const svg = this._els.mapSvg;
+    const w = svg.clientWidth || 1;
+    const h = svg.clientHeight || 1;
+    const aspect = w / h;
+    let vx, vy, vw, vh;
+    if (this._config.map_view === "follow" && (center || this._lastPos)) {
+      const [cx, cy] = center || this._lastPos;
+      vw = Number(this._config.follow_m) * 100;
+      vh = vw / aspect;
+      vx = cx - vw / 2;
+      vy = cy - vh / 2;
+    } else {
+      const [x, y, tw, th] = this._zmap.view;
+      const pad = 0.06;
+      vw = tw * (1 + 2 * pad);
+      vh = th * (1 + 2 * pad);
+      if (vw / vh > aspect) vh = vw / aspect;
+      else vw = vh * aspect;
+      vx = x + tw / 2 - vw / 2;
+      vy = y + th / 2 - vh / 2;
+    }
+    svg.setAttribute("viewBox", `${vx.toFixed(0)} ${vy.toFixed(0)} ${vw.toFixed(0)} ${vh.toFixed(0)}`);
+    // Marker size in map units: constant on screen.
+    const unit = vw / w;
+    if (this._live?.me) {
+      this._live.me.setAttribute("r", (11 * unit).toFixed(0));
+      this._live.halo.setAttribute("r", (24 * unit).toFixed(0));
+    }
   }
 
   _renderLive(a) {
@@ -437,29 +582,58 @@ class ZwiftMapCard extends HTMLElement {
     const along = a.lap_distance_m != null ? Math.max(0, a.lap_distance_m) : 0;
     const frac = length ? Math.min(along / length, 1) : 0;
 
-    // Map: projection from the stored track, or from the live trail if none yet.
-    let project = this._project;
-    if (!project && this._trail.length > 1) project = this._projector(this._trail);
-    if (project && a.x != null) {
-      const [mx, my] = project([a.x, a.z]);
-      for (const c of [L.me, L.halo]) {
-        c.setAttribute("cx", mx.toFixed(1));
-        c.setAttribute("cy", my.toFixed(1));
+    if (this._zmap) {
+      // Rider placed by distance along the route (or the lead-in) path.
+      let pos = null;
+      try {
+        if (a.route_distance_m != null && a.route_distance_m < 0 && L.leadPath && this._leadLen) {
+          const leadM = a.lead_in_m || 1;
+          const f = Math.min(Math.max((leadM + a.route_distance_m) / leadM, 0), 1);
+          pos = L.leadPath.getPointAtLength(f * this._leadLen);
+        } else if (this._routeLen) {
+          pos = L.route.getPointAtLength(frac * this._routeLen);
+        }
+      } catch (_err) {
+        pos = null;
       }
-      L.me.style.display = L.halo.style.display = "";
+      if (pos) {
+        this._lastPos = [pos.x, pos.y];
+        for (const c of [L.me, L.halo]) {
+          c.setAttribute("cx", pos.x.toFixed(0));
+          c.setAttribute("cy", pos.y.toFixed(0));
+        }
+        if (this._config.map_view === "follow") this._fitZwiftView(this._lastPos);
+      }
+      L.me.style.display = L.halo.style.display = pos ? "" : "none";
+      L.done.setAttribute("stroke-dasharray", `${(frac * 1000).toFixed(1)} 1000`);
     } else {
-      L.me.style.display = L.halo.style.display = "none";
+      // Simple style: projection from the recorded track, or the live trail.
+      let project = this._project;
+      if (!project && this._trail.length > 1) project = this._projector(this._trail);
+      if (project && a.x != null) {
+        const [mx, my] = project([a.x, a.z]);
+        for (const c of [L.me, L.halo]) {
+          c.setAttribute("cx", mx.toFixed(1));
+          c.setAttribute("cy", my.toFixed(1));
+        }
+        L.me.style.display = L.halo.style.display = "";
+      } else {
+        L.me.style.display = L.halo.style.display = "none";
+      }
+      if (L.done) L.done.setAttribute("stroke-dasharray", `${(frac * 1000).toFixed(1)} 1000`);
+      const showTrail = !this._track || (this._track.coverage ?? 0) < 0.98;
+      L.trail.setAttribute("d", showTrail && project && this._trail.length > 1 ? polyline(this._trail.map(project)) : "");
     }
-    if (L.done) L.done.setAttribute("stroke-dasharray", `${(frac * 1000).toFixed(1)} 1000`);
-    const showTrail = !this._track || (this._track.coverage ?? 0) < 0.98;
-    L.trail.setAttribute("d", showTrail && project && this._trail.length > 1 ? polyline(this._trail.map(project)) : "");
 
     // Profile
-    const x = frac * PROF_W;
+    const span = this._profSpan || length;
+    const x = span ? Math.min(Math.max(along, 0) / span, 1) * PROF_W : 0;
     if (L.clip) L.clip.setAttribute("width", x.toFixed(1));
-    L.cursor.setAttribute("x1", x.toFixed(1));
-    L.cursor.setAttribute("x2", x.toFixed(1));
-    L.cursor.style.display = this._profPts ? "" : "none";
+    if (L.cursor) {
+      L.cursor.setAttribute("x1", x.toFixed(1));
+      L.cursor.setAttribute("x2", x.toFixed(1));
+      L.cursor.style.display = this._profPts ? "" : "none";
+    }
     this._els.pGrade.textContent = a.gradient_pct != null ? `${Number(a.gradient_pct).toFixed(1)} %` : "";
     this._els.pFlag.textContent = a.remaining_m != null ? `🏁 ${(a.remaining_m / 1000).toFixed(1)} km` : "";
     this._els.bar.style.width = `${(a.progress_pct ?? 0).toFixed(1)}%`;

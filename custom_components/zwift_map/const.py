@@ -3,7 +3,7 @@
 from datetime import timedelta
 
 DOMAIN = "zwift_map"
-VERSION = "0.1.0"
+VERSION = "0.2.0"
 
 CONF_PLAYER_ID = "player_id"
 
@@ -23,7 +23,9 @@ STALE_STATE_AFTER = timedelta(seconds=60)
 TRACK_SAVE_INTERVAL = timedelta(seconds=60)
 
 TRACKS_DIR = "zwift_map/tracks"
+ZWIFTHACKS_DIR = "zwift_map/zwifthacks"
 STORAGE_VERSION = 1
 
 STATIC_URL = "/zwift_map_static"
+MAPS_STATIC_URL = "/zwift_map_maps"
 CARD_FILENAME = "zwift-map-card.js"
