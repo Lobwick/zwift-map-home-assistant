@@ -105,3 +105,15 @@ async def test_cache_survives_network_failure(tmp_path):
 
     cache = ZwiftHacksCache(tmp_path, fail, fail, run, "/m")
     assert await cache.async_get_map(BIG_LOOP) is None
+
+
+def test_route_info_from_map():
+    from zwift_map_pure.zwifthacks import route_info_from_map
+
+    data = {
+        "route": "M 0,0 100000,0 100000,100000 100,50",  # closed loop (start ≈ end)
+        "profile": {"route": [[0, 10], [500, 20], [3993.5, 10]], "leadin": [[-1876.1, 5], [0, 10]]},
+    }
+    info = route_info_from_map(7, data)
+    assert info == {"id": 7, "distance_m": 3994, "lead_in_m": 1876, "elevation_m": 10, "lap": True}
+    assert route_info_from_map(7, {"profile": {"route": []}}) is None

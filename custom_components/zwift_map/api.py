@@ -88,11 +88,14 @@ class ZwiftClient:
             assert self._access_token
             return self._access_token
 
-    async def _get(self, path: str, accept: str) -> aiohttp.ClientResponse:
+    async def _get(
+        self, path: str, accept: str, extra_headers: dict[str, str] | None = None
+    ) -> aiohttp.ClientResponse:
         headers = {
             "Accept": accept,
             "Authorization": f"Bearer {await self._token()}",
             "User-Agent": USER_AGENT,
+            **(extra_headers or {}),
         }
         resp = await self._session.get(API_BASE + path, headers=headers, timeout=TIMEOUT)
         if resp.status == 401:
@@ -110,6 +113,14 @@ class ZwiftClient:
         async with resp:
             if resp.status >= 400:
                 raise ZwiftError(f"profile request returned {resp.status}")
+            return await resp.json(content_type=None)
+
+    async def async_get_game_info(self) -> dict[str, Any]:
+        """Zwift's own catalogue: every world and route, new ones included."""
+        resp = await self._get("/api/game_info", "application/json", {"Zwift-Api-Version": "2.6"})
+        async with resp:
+            if resp.status >= 400:
+                raise ZwiftError(f"game_info request returned {resp.status}")
             return await resp.json(content_type=None)
 
     async def async_get_player_state(self, player_id: int) -> PlayerState:

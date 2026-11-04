@@ -21,6 +21,18 @@ from custom_components.zwift_map.protobuf import PlayerState
 
 PLAYER_ID = 1234567
 BIG_LOOP = 2947111049  # 42.6 km lap route, 522 m lead-in (events)
+GAME_INFO = {
+    "maps": [
+        {
+            "name": "WATOPIA",
+            "routes": [
+                {"id": 3266658632 - (1 << 32), "name": "Caldera Cruiser Reverse",
+                 "distanceInMeters": 3993.5, "leadinDistanceInMeters": 1876.1,
+                 "freeRideLeadinDistanceInMeters": 0.0, "supportedLaps": True}
+            ],
+        }
+    ]
+}
 PROFILE = {"id": PLAYER_ID, "firstName": "Félix", "lastName": "Moulin", "riding": True}
 
 
@@ -45,7 +57,7 @@ def state(distance: int, world_time: int, route_id: int = BIG_LOOP, power: int =
         altitude_m=10 + distance * 0.02,
         group_id=0,
         sport=0,
-        world_id=1,
+        course=6,
         route_id=route_id,
     )
 
@@ -123,6 +135,10 @@ async def test_ride_progress_track_and_view(
             "custom_components.zwift_map.api.ZwiftClient.async_get_player_state",
             side_effect=next_state,
         ),
+        patch(
+            "custom_components.zwift_map.api.ZwiftClient.async_get_game_info",
+            AsyncMock(return_value=GAME_INFO),
+        ),
     ):
         assert await hass.config_entries.async_setup(entry.entry_id)
         await hass.async_block_till_done()
@@ -132,6 +148,9 @@ async def test_ride_progress_track_and_view(
         assert hass.states.get("binary_sensor.zwift_map_riding").state == "on"
 
         coordinator = entry.runtime_data
+        # Zwift's game_info filled in a route the bundled catalogue lacks; cached in /config.
+        assert coordinator.catalogue.get(3266658632).name == "Caldera Cruiser Reverse"
+        assert (tmp_path / "zwift_map" / "game_info.json").is_file()
         assert coordinator.update_interval == timedelta(seconds=2)  # riding: fast polling
         for _ in range(1, 120):
             await coordinator.async_refresh()

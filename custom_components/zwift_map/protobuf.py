@@ -40,7 +40,7 @@ F_Y_ALTITUDE = 26
 F_Z = 27
 F_GROUP_ID = 29
 F_SPORT = 31
-F_WORLD = 35
+F_COURSE = 35  # named 'world' in some docs, but holds the course id (6 = Watopia)
 F_ROUTE = 39
 
 _FLOAT_FIELDS = {F_X, F_Y_ALTITUDE, F_Z}
@@ -137,13 +137,13 @@ class PlayerState:
     altitude_m: float
     group_id: int
     sport: int
-    world_id: int
+    course: int
     route_id: int
 
     @property
     def course_id(self) -> int:
-        """Course (map) id packed into field 19."""
-        return (self.f19 & 0xFF0000) >> 16
+        """Course (map) id: field 35, or the copy packed into field 19."""
+        return self.course or (self.f19 & 0xFF0000) >> 16
 
     @property
     def is_forward(self) -> bool:
@@ -199,9 +199,10 @@ def parse_player_state(buf: bytes) -> PlayerState:
         calories=num(F_CALORIES),
         x_m=flt(F_X) / 100,
         z_m=flt(F_Z) / 100,
-        altitude_m=(flt(F_Y_ALTITUDE) - 9000) / 2,
+        # Altitude arrives in centimetres, offset and doubled: (y - 9000) / 2 cm.
+        altitude_m=(flt(F_Y_ALTITUDE) - 9000) / 200,
         group_id=_signed64(num(F_GROUP_ID)),
         sport=num(F_SPORT),
-        world_id=num(F_WORLD),
+        course=num(F_COURSE),
         route_id=route_id,
     )

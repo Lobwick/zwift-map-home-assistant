@@ -223,3 +223,40 @@ def test_catalogue_segments_for_big_loop():
     assert [(s.name, s.type, s.from_m, s.to_m) for s in big_loop.segments] == [
         ("Epic KOM", "climb", 4408, 13808)
     ]
+
+
+def test_game_info_adds_missing_routes_only():
+    cat = RouteCatalogue.load()
+    before = cat.get(2947111049)
+    added = cat.merge_game_info(
+        {
+            "maps": [
+                {
+                    "name": "WATOPIA",
+                    "routes": [
+                        # ids above 2**31 may come signed
+                        {"id": 3266658632 - (1 << 32), "name": "Caldera Cruiser Reverse",
+                         "distanceInMeters": 3993.5, "ascentInMeters": 12.3,
+                         "leadinDistanceInMeters": 1876.1, "freeRideLeadinDistanceInMeters": 0.0,
+                         "supportedLaps": True},
+                        {"id": 2947111049, "name": "Big Loop (renamed)", "distanceInMeters": 1},
+                        {"id": 42, "name": "Broken", "distanceInMeters": 0},
+                    ],
+                }
+            ]
+        }
+    )
+    assert added == 1
+    new = cat.get(3266658632)
+    assert (new.name, new.world, new.distance_m, new.lead_in_for(False), new.lead_in_for(True)) == (
+        "Caldera Cruiser Reverse", "Watopia", 3994, 0, 1876
+    )
+    assert cat.get(2947111049) is before  # bundled entry kept, with its segments
+
+
+def test_course_names():
+    from zwift_map_pure.routes import course_name
+
+    assert course_name(6) == "Watopia"
+    assert course_name(10) == "Bologna"
+    assert course_name(0) is None

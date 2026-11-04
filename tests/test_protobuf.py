@@ -48,10 +48,10 @@ def sample_state(route_id: int = 2947111049) -> bytes:
             field_varint(19, (6 << 16) | 4),  # course 6, forward
             field_varint(20, 23 << 8),  # road 23
             field_float(25, 12345.0),
-            field_float(26, 9100.0),
+            field_float(26, 9898.2),  # 449.1 cm = 4.491 m
             field_float(27, -6789.0),
             field_bytes(30, b"ignored"),
-            field_varint(35, 1),
+            field_varint(35, 6),  # course 6 = Watopia
             field_varint(39, int32_wire(route_id)),
         ]
     )
@@ -70,8 +70,9 @@ def test_parse_player_state_fields():
     assert state.road_id == 23
     assert state.x_m == pytest.approx(123.45)
     assert state.z_m == pytest.approx(-67.89)
-    assert state.altitude_m == pytest.approx(50.0)
-    assert state.world_id == 1
+    assert state.altitude_m == pytest.approx(4.491)
+    assert state.course == 6
+    assert state.course_id == 6
     assert state.is_active
 
 
@@ -84,7 +85,7 @@ def test_route_id_above_int32_range_is_unsigned():
 def test_missing_fields_default_to_zero():
     state = parse_player_state(field_varint(1, 42))
     assert state.route_id == 0
-    assert state.world_id == 0
+    assert state.course == 0
     assert not state.is_active
 
 

@@ -678,6 +678,12 @@ class ZwiftMapCard extends HTMLElement {
     } catch (_err) {
       this._routeLen = this._leadLen = 0;
     }
+    // Points every ~10 m along the route and the lead-in, to snap the rider's
+    // real position onto them.
+    this._routeSamples = this._samplePath(L.route, this._routeLen);
+    this._leadSamples = L.leadPath ? this._samplePath(L.leadPath, this._leadLen) : null;
+    this._lastAlong = null;
+    this._dirAcc = 0;
     const segs = this._routeSegments(attrs);
     const length = attrs.route_length_m || 0;
     if (!segs.length && this._config.show_segments) {
@@ -690,6 +696,37 @@ class ZwiftMapCard extends HTMLElement {
     L.halo = el("circle", { r: 0, class: "z-halo" }, map);
     L.me = el("circle", { r: 0, class: "z-me" }, map);
     this._fitZwiftView();
+  }
+
+  _samplePath(path, total) {
+    const out = [];
+    if (!path || !total) return out;
+    const step = Math.max(total / 6000, 1000); // >= 10 m, at most ~6000 points
+    try {
+      for (let s = 0; s <= total; s += step) {
+        const p = path.getPointAtLength(s);
+        out.push([s, p.x, p.y]);
+      }
+    } catch (_err) {
+      return [];
+    }
+    return out;
+  }
+
+  // Nearest sample to (x, y). Where the road passes twice (crossings, laps),
+  // prefer the candidate closest to where we expect the rider to be.
+  _nearest(samples, x, y, expected) {
+    let best = null;
+    let near = null;
+    for (const [s, px, py] of samples) {
+      const d = Math.hypot(px - x, py - y);
+      if (!best || d < best.d) best = { s, x: px, y: py, d };
+      if (expected != null && d < 3000) {
+        const gap = Math.abs(s - expected);
+        if (!near || gap < near.gap) near = { s, x: px, y: py, d, gap };
+      }
+    }
+    return near || best;
   }
 
   // Fit the route's view to the map box (no letterboxing), or follow the rider.
@@ -739,19 +776,52 @@ class ZwiftMapCard extends HTMLElement {
     const frac = length ? Math.min(along / length, 1) : 0;
 
     if (this._zmap) {
-      // Rider placed by distance along the route (or the lead-in) path.
       let pos = null;
-      try {
-        if (a.route_distance_m != null && a.route_distance_m < 0 && L.leadPath && this._leadLen) {
-          const leadM = a.lead_in_m || 1;
-          const f = Math.min(Math.max((leadM + a.route_distance_m) / leadM, 0), 1);
-          pos = L.leadPath.getPointAtLength(f * this._leadLen);
-        } else if (this._routeLen) {
-          pos = L.route.getPointAtLength(frac * this._routeLen);
+      let alongPath = null; // position on the drawn route path, in map units
+      let onLead = false;
+      // 1. Real position: the game's (x, z) in metres are the map's (z, -x) in
+      //    centimetres. Snapped to the route (or lead-in) when within 150 m.
+      if (a.x != null && a.z != null && this._routeSamples?.length) {
+        const X = a.z * 100;
+        const Y = -a.x * 100;
+        const expected = this._lastAlong ?? (length ? frac * this._routeLen : null);
+        const r = this._nearest(this._routeSamples, X, Y, expected);
+        const l = this._leadSamples?.length ? this._nearest(this._leadSamples, X, Y, null) : null;
+        if (l && l.d < r.d && l.d < 15000) {
+          pos = { x: l.x, y: l.y };
+          onLead = true;
+        } else if (r.d < 15000) {
+          pos = { x: r.x, y: r.y };
+          alongPath = r.s;
         }
-      } catch (_err) {
-        pos = null;
       }
+      // 2. Otherwise, distance ridden along the route (or the lead-in) path.
+      if (!pos) {
+        try {
+          if (a.route_distance_m != null && a.route_distance_m < 0 && L.leadPath && this._leadLen) {
+            const leadM = a.lead_in_m || 1;
+            const f = Math.min(Math.max((leadM + a.route_distance_m) / leadM, 0), 1);
+            pos = L.leadPath.getPointAtLength(f * this._leadLen);
+            onLead = true;
+          } else if (this._routeLen && length) {
+            alongPath = frac * this._routeLen;
+            pos = L.route.getPointAtLength(alongPath);
+          }
+        } catch (_err) {
+          pos = null;
+        }
+      }
+      // Riding direction relative to the drawn path (the same road can be
+      // ridden either way): accumulated movement along it.
+      if (alongPath != null && this._lastAlong != null) {
+        const delta = alongPath - this._lastAlong;
+        if (Math.abs(delta) < this._routeLen / 2) {
+          this._dirAcc = Math.max(-20000, Math.min(20000, this._dirAcc + delta));
+        }
+      }
+      if (alongPath != null) this._lastAlong = alongPath;
+      this._reversed = this._dirAcc < -5000;
+      this._pathFrac = onLead ? 0 : alongPath != null && this._routeLen ? alongPath / this._routeLen : null;
       if (pos) {
         this._lastPos = [pos.x, pos.y];
         for (const c of [L.me, L.halo]) {
@@ -761,7 +831,16 @@ class ZwiftMapCard extends HTMLElement {
         if (this._config.map_view === "follow") this._fitZwiftView(this._lastPos);
       }
       L.me.style.display = L.halo.style.display = pos ? "" : "none";
-      L.done.setAttribute("stroke-dasharray", `${(frac * 1000).toFixed(1)} 1000`);
+      // Ridden part: from the path start to the rider, or from the rider to
+      // the path end when riding the drawn route backwards.
+      const pf = this._pathFrac ?? frac;
+      if (this._reversed) {
+        L.done.setAttribute("stroke-dasharray", `${((1 - pf) * 1000).toFixed(1)} 2000`);
+        L.done.setAttribute("stroke-dashoffset", (-pf * 1000).toFixed(1));
+      } else {
+        L.done.setAttribute("stroke-dasharray", `${(pf * 1000).toFixed(1)} 1000`);
+        L.done.removeAttribute("stroke-dashoffset");
+      }
     } else {
       // Simple style: projection from the recorded track, or the live trail.
       let project = this._project;
@@ -783,8 +862,14 @@ class ZwiftMapCard extends HTMLElement {
 
     // Profile
     const span = this._profSpan || length;
-    const x = span ? Math.min(Math.max(along, 0) / span, 1) * PROF_W : 0;
-    if (L.clip) L.clip.setAttribute("width", x.toFixed(1));
+    const pfrac = this._zmap && this._pathFrac != null ? this._pathFrac : span ? Math.max(along, 0) / span : 0;
+    const x = Math.min(Math.max(pfrac, 0), 1) * PROF_W;
+    if (L.clip) {
+      // Backwards on the drawn route: the ridden part is to the right.
+      const back = Boolean(this._zmap && this._reversed);
+      L.clip.setAttribute("x", back ? x.toFixed(1) : 0);
+      L.clip.setAttribute("width", (back ? PROF_W - x : x).toFixed(1));
+    }
     if (L.cursor) {
       L.cursor.setAttribute("x1", x.toFixed(1));
       L.cursor.setAttribute("x2", x.toFixed(1));
