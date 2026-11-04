@@ -1,0 +1,75 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Compte Zwift",
+        "description": "Mêmes identifiants que l'app Zwift. Lecture seule, via l'API non officielle de Zwift.",
+        "data": {
+          "username": "E-mail",
+          "password": "Mot de passe"
+        }
+      },
+      "reauth_confirm": {
+        "title": "Se reconnecter à Zwift",
+        "description": "Mêmes identifiants que l'app Zwift. Lecture seule, via l'API non officielle de Zwift.",
+        "data": {
+          "username": "E-mail",
+          "password": "Mot de passe"
+        }
+      }
+    },
+    "error": {
+      "invalid_auth": "Zwift a refusé ces identifiants.",
+      "cannot_connect": "Impossible de joindre Zwift."
+    },
+    "abort": {
+      "already_configured": "Ce compte Zwift est déjà configuré.",
+      "reauth_successful": "Reconnexion réussie.",
+      "wrong_account": "Il s'agit d'un autre compte Zwift."
+    }
+  },
+  "entity": {
+    "binary_sensor": {
+      "riding": {
+        "name": "Sur Zwift"
+      }
+    },
+    "sensor": {
+      "route": {
+        "name": "Route"
+      },
+      "world": {
+        "name": "Monde"
+      },
+      "route_progress": {
+        "name": "Progression sur la route"
+      },
+      "route_distance": {
+        "name": "Distance sur la route"
+      },
+      "remaining_distance": {
+        "name": "Distance restante"
+      },
+      "lap": {
+        "name": "Tour"
+      },
+      "gradient": {
+        "name": "Pente"
+      },
+      "live": {
+        "name": "Direct",
+        "state": {
+          "offline": "Hors ligne",
+          "free_ride": "Free ride",
+          "lead_in": "Lead-in",
+          "on_route": "Sur la route",
+          "finished": "Terminée",
+          "unknown_route": "Route inconnue"
+        }
+      },
+      "next_segment": {
+        "name": "Prochain segment"
+      }
+    }
+  }
+}

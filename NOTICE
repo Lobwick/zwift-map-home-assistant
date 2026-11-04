@@ -1,0 +1,12 @@
+Zwift Map for Home Assistant
+Copyright (c) 2026 Lobwick — MIT License (see LICENSE)
+
+Third-party data bundled with this integration:
+
+custom_components/zwift_map/data/routes.json is generated from zwift-data
+(https://github.com/andipaetzold/zwift-data), MIT License,
+Copyright (c) 2021 Andi Pätzold.
+
+Route maps are not bundled: they are downloaded from ZwiftHacks
+(https://zwifthacks.com) at runtime and cached in the Home Assistant
+configuration folder for personal use. Not affiliated with Zwift, Inc.

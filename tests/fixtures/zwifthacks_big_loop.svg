@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="map-svg" viewBox="-416763 -167924 763824 952916.33333333" width="641.25168036788" height="800" style="" class="map-svg world_1">
+<!-- Reduced copy of https://zwifthacks.com/app/routes/svg/route/?world=1&route=11 (Big Loop):
+     same structure, paths cut to their first points. -->
+<defs>
+</defs>
+
+<view id="tightView" viewBox="-331671 -136098 593639 700172 "/>
+<view id="looseView" viewBox="-416763 -167924 763824 952916.33333333 "/>
+
+<g class="svg-pan-zoom_viewport">
+<g class="world world_1 WATOPIA" id="world_1">
+
+<image class="minimap background" opacity="0.9" x="-824000" y="-209000" width="1694000" height="1270500" href="https://cdn.zwifthacks.com/maps/background/watopia_50pct.png">
+</image>
+
+<rect width="1694000" height="191092.33333333" x="-824000" y="593900" style="fill:#cecece;stroke-width:3;stroke:rgb(0,0,0)"/>
+
+<g transform="rotate(0,0,0)">
+<g transform="translate(0,0)">
+<g id="roads" class="roads world_1 WATOPIA">
+<g class="route">
+<path class="leadin" id="leadin_11" d="M 6568.7285,-101437.23 5976.1836,-100634.34 5343.3013,-99861.164 4573.1543,-99224.758" pathLength="900" style="fill:none;stroke:red;stroke-width:6000;stroke-opacity:40%"/>
+</g>
+<g class="route">
+<path class="route" id="route_11" d="M 20593.076,-89324.141 21165.492,-90158.672 21767.33,-90969.742 22437.85,-91721.578" pathLength="900" style="fill:none;stroke:black;stroke-width:2800;stroke-opacity:100%"/>
+</g>
+<path class="ts" id="ts_route407_1353" d="M 174488.75,190845.38  175142.11,191559.72 175565.69,192466.75 175490.23,193432.59" style="stroke:#1192cc;fill:none;stroke-width:1800;stroke-opacity:100%" filter="url(#filter-blur)"/>
+<path class="ts" id="ts_route407_1353" d="M 174488.75,190845.38  175142.11,191559.72 175565.69,192466.75 175490.23,193432.59" style="stroke:#1192cc;fill:none;stroke-width:1500;stroke-opacity:80%"/>
+
+<g id="startlines" class="startlines">
+<g class="startline">
+<use xlink:href="#map-marker" id="3" class="arch" x="169078" y="180024" width="10821.59149941" height="10821.59149941" stroke="none" stroke-width="5" fill="#1192cc"/>
+</g>
+</g>
+<path class="wire" id="fullroute" d="M 6568.7285,-101437.23 5976.1836,-100634.34 5343.3013,-99861.164 4573.1543,-99224.758" style="fill:none;stroke:none;stroke-width:1;stroke-opacity:1%" pathLength="4250537.0031217"/>
+<path class="wire" id="tostart" d="M 6568.7285,-101437.23 6568.7285,-101437.23" style="fill:none;stroke:none;stroke-width:1;stroke-opacity:1%" pathLength="0"/>
+</g>
+</g>
+</g>
+</g>
+
+<g class="profiles" transform="translate(-396763 711949) scale(0.17029001264273 1)">
+<path class="wire" id="fullprofile" d="M 0,-2284 997.86863394738,-2284 1997.0388559963,-2284 2996.1079218997,-2284" style="fill:none;stroke:none;stroke-width:1;stroke-opacity:1%" pathLength="4316652.414472"/>
+<path class="outline" id="profileoutline" d="M 0,-2284 997.86863394738,-2284 1997.0388559963,-2284 2996.1079218997,-2284" style="fill:darkgray;stroke:none;stroke-width:1;stroke-opacity:1%"/>
+<path class="outline" id="ts_outline407_1353" d="M 450504.50718409,-2842.912  451472.57790733,-2926.922 452473.63906295,-3049.675 453442.42238094,-3201.962" style="fill:#1192cc;fill-opacity:50%;stroke:none;stroke-width:1;stroke-opacity:1%"/>
+<g class="profile leadin">
+<path class="leadin" id="profile_11" d="M 0,-2284 997.86863394738,-2284 1997.0388559963,-2284 2996.1079218997,-2284" pathLength="900" style="fill:none;stroke:red;stroke-width:2100;stroke-opacity:40%"/>
+</g>
+<g class="profile route">
+<path class="route" id="profile_11" d="M 52535.521752888,-1821.3047 53547.501034799,-1845.0869 54557.473075572,-1870.4141 55564.872917391,-1898.4492" pathLength="900" style="fill:none;stroke:black;stroke-width:2100;stroke-opacity:100%"/>
+</g>
+</g>
+</g>
+Sorry, your browser does not support inline SVG.
+</svg>
